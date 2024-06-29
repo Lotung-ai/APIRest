@@ -22,6 +22,8 @@ namespace Dot.Net.WebApi.Data
            .HasKey(cp => cp.BidListId);
             builder.Entity<CurvePoint>()
            .HasKey(cp => cp.Id);
+            builder.Entity<Rating>()
+           .HasKey(cp => cp.Id);
         }
     }
 }

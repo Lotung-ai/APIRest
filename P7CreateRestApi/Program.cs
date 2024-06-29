@@ -7,6 +7,7 @@ ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddScoped<IBidRepository, BidRepository>();
 builder.Services.AddScoped<ICurvePointRepository, CurvePointRepository>();
+builder.Services.AddScoped<IRatingRepository, RatingRepository>();
 // Add services to the container.
 
 builder.Services.AddControllers();
