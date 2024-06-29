@@ -24,6 +24,8 @@ namespace Dot.Net.WebApi.Data
            .HasKey(cp => cp.Id);
             builder.Entity<Rating>()
            .HasKey(cp => cp.Id);
+            builder.Entity<RuleName>()
+          .HasKey(cp => cp.Id);
         }
     }
 }
