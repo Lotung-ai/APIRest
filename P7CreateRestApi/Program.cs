@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
+builder.Services.AddScoped<IBidRepository, BidRepository>();
 // Add services to the container.
 
 builder.Services.AddControllers();
