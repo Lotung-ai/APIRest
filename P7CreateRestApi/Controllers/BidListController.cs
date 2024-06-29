@@ -71,7 +71,7 @@ namespace Dot.Net.WebApi.Controllers
             return NoContent();
         }
 
-        [HttpGet]
+      /*  [HttpGet]
         [Route("validate")]
         public IActionResult Validate([FromBody] BidList bidList)
         {
@@ -84,7 +84,7 @@ namespace Dot.Net.WebApi.Controllers
         public IActionResult ShowUpdateForm(int id)
         {
             return Ok();
-        }
+        }*/
 
     }
 }

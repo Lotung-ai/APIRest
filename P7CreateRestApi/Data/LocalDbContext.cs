@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Dot.Net.WebApi.Domain;
+using System.Reflection.Emit;
 
 namespace Dot.Net.WebApi.Data
 {
@@ -16,6 +17,11 @@ namespace Dot.Net.WebApi.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<BidList>()
+           .HasKey(cp => cp.BidListId);
+            builder.Entity<CurvePoint>()
+           .HasKey(cp => cp.Id);
         }
     }
 }
