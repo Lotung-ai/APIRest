@@ -1,21 +1,74 @@
-using Dot.Net.WebApi.Domain;
-using Dot.Net.WebApi.Repositories;
+using P7CreateRestApi.Domain;
+using P7CreateRestApi.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dot.Net.WebApi.Controllers
+namespace P7CreateRestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserController(UserRepository userRepository)
+        public UserController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
+        }   
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(User user)
+        {
+            if (user == null)
+            {
+                return BadRequest("User cannot be null.");
+            }
+
+            var createdUser = await _userRepository.CreateUserAsync(user);
+            return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userRepository.GetAllUsersAsync();
+            return Ok(users);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, User user)
+        {
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
+
+            var updatedUser = await _userRepository.UpdateUserAsync(user);
+            return Ok(updatedUser);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var result = await _userRepository.DeleteUserAsync(id);
+            if (!result)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+        /*[HttpGet]
         [Route("list")]
         public IActionResult Home()
         {
@@ -80,6 +133,6 @@ namespace Dot.Net.WebApi.Controllers
         public async Task<ActionResult<List<User>>> GetAllUserArticles()
         {
             return Ok();
-        }
+        }*/
     }
 }

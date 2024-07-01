@@ -1,7 +1,7 @@
-﻿using Dot.Net.WebApi.Domain;
+﻿using P7CreateRestApi.Domain;
 using System.Security.Cryptography;
 
-namespace Dot.Net.WebApi.Data
+namespace P7CreateRestApi.Repositories
 {
     public interface IBidRepository
     {

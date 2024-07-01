@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using Dot.Net.WebApi.Data;
-using Dot.Net.WebApi.Domain;
 using P7CreateRestApi.Data;
+using P7CreateRestApi.Domain;
+using P7CreateRestApi.Repositories;
 
-namespace Dot.Net.WebApi.Controllers
+namespace P7CreateRestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

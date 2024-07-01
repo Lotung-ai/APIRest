@@ -1,7 +1,8 @@
-﻿using Dot.Net.WebApi.Domain;
+﻿using P7CreateRestApi.Data;
+using P7CreateRestApi.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dot.Net.WebApi.Data
+namespace P7CreateRestApi.Repositories
 {
     /// <summary>
     /// Implémentation du dépôt pour les opérations CRUD sur l'entité <see cref="BidList"/>.

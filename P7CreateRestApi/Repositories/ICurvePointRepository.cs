@@ -1,6 +1,6 @@
-﻿using Dot.Net.WebApi.Domain;
+﻿using P7CreateRestApi.Domain;
 
-namespace P7CreateRestApi.Data
+namespace P7CreateRestApi.Repositories
 {
     public interface ICurvePointRepository
     {

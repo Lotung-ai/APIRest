@@ -1,7 +1,7 @@
-﻿using Dot.Net.WebApi.Domain;
+﻿using P7CreateRestApi.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace P7CreateRestApi.Data
+namespace P7CreateRestApi.Repositories
 {
     public interface IRatingRepository
     {
@@ -10,6 +10,6 @@ namespace P7CreateRestApi.Data
         Task<IEnumerable<Rating>> GetAllRatingsAsync();
         Task<Rating> UpdateRatingAsync(Rating rating);
         Task<bool> DeleteRatingAsync(int id);
-      
+
     }
 }
