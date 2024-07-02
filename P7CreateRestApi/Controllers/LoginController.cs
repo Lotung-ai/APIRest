@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Models;
 using P7CreateRestApi.Domain;
 using System.Threading.Tasks;
+using P7CreateRestApi.Services;
 
 namespace P7CreateRestApi.Controllers
 {
@@ -11,10 +12,12 @@ namespace P7CreateRestApi.Controllers
     public class LoginController : ControllerBase
     {
         private readonly SignInManager<User> _signInManager;
+        private readonly TokenService _tokenService;
 
-        public LoginController(SignInManager<User> signInManager)
+        public LoginController(SignInManager<User> signInManager, TokenService tokenService)
         {
             _signInManager = signInManager;
+            _tokenService = tokenService;
         }
 
         // POST api/login
@@ -31,7 +34,10 @@ namespace P7CreateRestApi.Controllers
 
             if (result.Succeeded)
             {
-                return Ok(new { Message = "Login successful." });
+                var user = await _signInManager.UserManager.FindByNameAsync(model.UserName);
+                var token = await _tokenService.GenerateTokenAsync(user);
+                return Ok(new { Message = "Login successful.", Token=token });
+
             }
 
             if (result.IsLockedOut)

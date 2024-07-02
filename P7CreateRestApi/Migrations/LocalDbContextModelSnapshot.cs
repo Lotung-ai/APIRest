@@ -242,7 +242,7 @@ namespace P7CreateRestApi.Migrations
 
                     b.HasKey("BidListId");
 
-                    b.ToTable("Bids");
+                    b.ToTable("Bids", (string)null);
                 });
 
             modelBuilder.Entity("P7CreateRestApi.Domain.CurvePoint", b =>
@@ -270,7 +270,7 @@ namespace P7CreateRestApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CurvePoints");
+                    b.ToTable("CurvePoints", (string)null);
                 });
 
             modelBuilder.Entity("P7CreateRestApi.Domain.Rating", b =>
@@ -298,7 +298,7 @@ namespace P7CreateRestApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ratings");
+                    b.ToTable("Ratings", (string)null);
                 });
 
             modelBuilder.Entity("P7CreateRestApi.Domain.RuleName", b =>
@@ -335,7 +335,7 @@ namespace P7CreateRestApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RuleNames");
+                    b.ToTable("RuleNames", (string)null);
                 });
 
             modelBuilder.Entity("P7CreateRestApi.Domain.Trade", b =>
@@ -421,7 +421,7 @@ namespace P7CreateRestApi.Migrations
 
                     b.HasKey("TradeId");
 
-                    b.ToTable("Trades");
+                    b.ToTable("Trades", (string)null);
                 });
 
             modelBuilder.Entity("P7CreateRestApi.Domain.User", b =>
