@@ -1,10 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using P7CreateRestApi.Domain;
 using System.Reflection.Emit;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace P7CreateRestApi.Data
 {
-    public class LocalDbContext : DbContext
+    public class LocalDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public LocalDbContext(DbContextOptions<LocalDbContext> options) : base(options) { }
 
@@ -30,6 +33,12 @@ namespace P7CreateRestApi.Data
          .HasKey(cp => cp.TradeId);
             builder.Entity<User>()
          .HasKey(cp => cp.Id);
+
+            // Additional configuration for Identity
+            builder.Entity<IdentityUserLogin<int>>().HasKey(l => new { l.LoginProvider, l.ProviderKey });
+            builder.Entity<IdentityUserRole<int>>().HasKey(r => new { r.UserId, r.RoleId });
+            builder.Entity<IdentityUserToken<int>>().HasKey(t => new { t.UserId, t.LoginProvider, t.Name });
         }
     }
+    
 }

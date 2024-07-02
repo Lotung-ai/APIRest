@@ -1,6 +1,9 @@
 using P7CreateRestApi.Data;
 using Microsoft.EntityFrameworkCore;
 using P7CreateRestApi.Repositories;
+using Microsoft.AspNetCore.Identity;
+using P7CreateRestApi.Domain;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -20,6 +23,27 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<LocalDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Configure Identity
+builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // Permet uniquement lettres et chiffres
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+})
+    .AddEntityFrameworkStores<LocalDbContext>()
+    .AddDefaultTokenProviders();
+
+
+
+
+builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
