@@ -57,9 +57,18 @@ namespace P7CreateRestApi.Tests
             var result = await _controller.CreateRating(rating);
 
             // Assert
-            var badRequestResult = Assert.IsType<BadRequestResult>(result);  // Vérifie que le résultat est du type BadRequestResult (HTTP 400 Bad Request)
-            Assert.Equal(400, badRequestResult.StatusCode);  // Vérifie que le code de statut est 400
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            // Vérifie que la réponse est de type BadRequestObjectResult (réponse 400 Bad Request avec des détails)
+            Assert.Equal(400, badRequestResult.StatusCode);
+            // Vérifie que le code de statut est 400
+
+            // Assurez-vous que l'objet retourné contient le message d'erreur approprié
+            var errorMessage = Assert.IsType<string>(badRequestResult.Value);
+            Assert.Equal("Rating object is null", errorMessage.Trim());
+            // Vérifie que le message d'erreur est "Rating object is null" en supprimant les espaces superflus
         }
+
+
 
         // Test pour CreateRating - Cas où le ModelState est invalide
         [Fact]
@@ -180,13 +189,17 @@ namespace P7CreateRestApi.Tests
             var result = await _controller.UpdateRating(1, rating);
 
             // Assert
-            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);  // Vérifie que le résultat est du type BadRequestObjectResult (HTTP 400 Bad Request)
-            Assert.True(badRequestResult.Value is SerializableError);
-            var errors = badRequestResult.Value as SerializableError;
+            // Vérifie que le résultat est de type BadRequestObjectResult.
+            // La méthode UpdateRating doit retourner un BadRequest avec un message d'erreur si l'objet Rating est null.
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
 
-            Assert.True(errors.ContainsKey("Rating"));  // Vérifie que le modèle d'état contient une clé "Rating"
-            var errorMessages = errors["Rating"] as string[];
-            Assert.Contains("The rating parameter cannot be null and must have a valid ID.", errorMessages);  // Vérifie le message d'erreur spécifique
+            // Vérifie que le code de statut HTTP est 400.
+            // C'est le code de réponse standard pour indiquer une demande incorrecte due à des données invalides (dans ce cas, Rating est null).
+            Assert.Equal(400, badRequestResult.StatusCode);
+
+            // Vérifie que le message de la réponse est "Rating object is null".
+            // Ce message est celui qui est renvoyé par la méthode UpdateRating pour indiquer que l'objet Rating ne peut pas être null.
+            Assert.Equal("Rating object is null", badRequestResult.Value);
         }
 
         // Test pour UpdateRating - ID ne correspond pas
