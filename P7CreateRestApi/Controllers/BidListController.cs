@@ -1,7 +1,7 @@
 using P7CreateRestApi.Domain;
 using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Repositories;
-using Microsoft.Extensions.Logging;  
+using Microsoft.Extensions.Logging;
 
 namespace P7CreateRestApi.Controllers
 {
@@ -10,7 +10,7 @@ namespace P7CreateRestApi.Controllers
     public class BidListController : ControllerBase
     {
         private readonly IBidRepository _bidRepository;
-        private readonly ILogger<BidListController> _logger; 
+        private readonly ILogger<BidListController> _logger;
 
         public BidListController(IBidRepository bidRepository, ILogger<BidListController> logger) 
         {
@@ -26,6 +26,12 @@ namespace P7CreateRestApi.Controllers
             {
                 _logger.LogWarning("CreateBid: Bid object is null");
                 return BadRequest("Bid object is null");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("CreateBid: ModelState is invalid");
+                return BadRequest(ModelState);  // Renvoie les erreurs de validation des données
             }
 
             try
@@ -72,6 +78,12 @@ namespace P7CreateRestApi.Controllers
             {
                 _logger.LogWarning($"UpdateBid: Bid object is null or ID mismatch for ID {id}");
                 return BadRequest("Bid object is null or ID mismatch");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning($"UpdateBid: ModelState is invalid for ID {id}");
+                return BadRequest(ModelState);  // Renvoie les erreurs de validation des données
             }
 
             try

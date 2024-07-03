@@ -2,7 +2,7 @@ using P7CreateRestApi.Data;
 using P7CreateRestApi.Domain;
 using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Repositories;
-using Microsoft.Extensions.Logging; 
+using Microsoft.Extensions.Logging;
 
 namespace P7CreateRestApi.Controllers
 {
@@ -11,12 +11,12 @@ namespace P7CreateRestApi.Controllers
     public class CurveController : ControllerBase
     {
         private readonly ICurvePointRepository _curveRepository;
-        private readonly ILogger<CurveController> _logger; 
+        private readonly ILogger<CurveController> _logger;
 
         public CurveController(ICurvePointRepository curveRepository, ILogger<CurveController> logger)
         {
             _curveRepository = curveRepository;
-            _logger = logger; 
+            _logger = logger;
         }
 
         [HttpPost]
@@ -28,6 +28,12 @@ namespace P7CreateRestApi.Controllers
             {
                 _logger.LogWarning("Received null CurvePoint in CreateCurvePoint.");
                 return BadRequest("CurvePoint cannot be null.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Invalid data in CreateCurvePoint.");
+                return BadRequest(ModelState);
             }
 
             try
@@ -99,12 +105,23 @@ namespace P7CreateRestApi.Controllers
             if (id != curvePoint.Id)
             {
                 _logger.LogWarning("ID mismatch in UpdateCurvePoint. Provided ID: {Id}, CurvePoint ID: {CurvePointId}", id, curvePoint.Id);
-                return BadRequest();
+                return BadRequest("ID mismatch.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Invalid data in UpdateCurvePoint.");
+                return BadRequest(ModelState);
             }
 
             try
             {
                 var updatedCurvePoint = await _curveRepository.UpdateCurvePointAsync(curvePoint);
+                if (updatedCurvePoint == null)
+                {
+                    _logger.LogWarning("CurvePoint with ID {Id} not found for update.", id);
+                    return NotFound();
+                }
                 _logger.LogInformation("Successfully updated CurvePoint with ID: {Id}", id);
                 return Ok(updatedCurvePoint);
             }
