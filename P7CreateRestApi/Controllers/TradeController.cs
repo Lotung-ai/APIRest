@@ -1,6 +1,7 @@
 using P7CreateRestApi.Domain;
 using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace P7CreateRestApi.Controllers
 {
@@ -8,111 +9,144 @@ namespace P7CreateRestApi.Controllers
     [Route("[controller]")]
     public class TradeController : ControllerBase
     {
-        // TODO: Inject Trade service
         private readonly ITradeRepository _tradeRepository;
-        public TradeController(ITradeRepository curveRepository)
+        private readonly ILogger<TradeController> _logger;
+
+        public TradeController(ITradeRepository tradeRepository, ILogger<TradeController> logger)
         {
-            _tradeRepository = curveRepository;
+            _tradeRepository = tradeRepository;
+            _logger = logger;
         }
+
         [HttpPost]
-        public async Task<IActionResult> CreateTrade(Trade trade)
+        public async Task<IActionResult> CreateTrade([FromBody] Trade trade)
         {
+            // Validation de l'objet Trade
             if (trade == null)
             {
+                _logger.LogWarning("CreateTrade: Trade object is null.");
                 return BadRequest("Trade cannot be null.");
             }
 
-            var createdTrade = await _tradeRepository.CreateTradeAsync(trade);
-            return CreatedAtAction(nameof(GetTradeById), new { id = createdTrade.TradeId }, createdTrade);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("CreateTrade: ModelState is invalid. Errors: {@Errors}", ModelState);
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var createdTrade = await _tradeRepository.CreateTradeAsync(trade);
+                _logger.LogInformation("CreateTrade: Trade created successfully with ID {TradeId}.", createdTrade.TradeId);
+                return CreatedAtAction(nameof(GetTradeById), new { id = createdTrade.TradeId }, createdTrade);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "CreateTrade: An error occurred while creating the trade.");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTradeById(int id)
         {
-            var trade = await _tradeRepository.GetTradeByIdAsync(id);
-            if (trade == null)
+            try
             {
-                return NotFound();
-            }
+                var trade = await _tradeRepository.GetTradeByIdAsync(id);
+                if (trade == null)
+                {
+                    _logger.LogWarning("GetTradeById: No trade found with ID {TradeId}.", id);
+                    return NotFound();
+                }
 
-            return Ok(trade);
+                _logger.LogInformation("GetTradeById: Successfully retrieved trade with ID {TradeId}.", id);
+                return Ok(trade);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "GetTradeById: An error occurred while retrieving the trade with ID {TradeId}.", id);
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllTrades()
         {
-            var trades = await _tradeRepository.GetAllTradesAsync();
-            return Ok(trades);
+            try
+            {
+                var trades = await _tradeRepository.GetAllTradesAsync();
+                _logger.LogInformation("GetAllTrades: Successfully retrieved all trades.");
+                return Ok(trades);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "GetAllTrades: An error occurred while retrieving all trades.");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTrade(int id, Trade trade)
+        public async Task<IActionResult> UpdateTrade(int id, [FromBody] Trade trade)
         {
-            if (id != trade.TradeId)
+            // Validation de l'objet Trade et de l'ID
+            if (trade == null)
             {
-                return BadRequest();
+                _logger.LogWarning("UpdateTrade: Trade object is null.");
+                return BadRequest("Trade cannot be null.");
             }
 
-            var updatedTrade = await _tradeRepository.UpdateTradeAsync(trade);
-            return Ok(updatedTrade);
+            if (id != trade.TradeId)
+            {
+                _logger.LogWarning("UpdateTrade: Trade ID mismatch. URL ID: {UrlId}, Trade ID: {TradeId}.", id, trade.TradeId);
+                ModelState.AddModelError("IdMismatch", "The trade ID in the URL does not match the ID in the trade object.");
+                return BadRequest(ModelState);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("UpdateTrade: ModelState is invalid. Errors: {@Errors}", ModelState);
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var updatedTrade = await _tradeRepository.UpdateTradeAsync(trade);
+                if (updatedTrade == null)
+                {
+                    _logger.LogWarning("UpdateTrade: No trade found with ID {TradeId} for update.", id);
+                    return NotFound();
+                }
+
+                _logger.LogInformation("UpdateTrade: Trade with ID {TradeId} updated successfully.", id);
+                return Ok(updatedTrade);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "UpdateTrade: An error occurred while updating the trade with ID {TradeId}.", id);
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTrade(int id)
         {
-            var result = await _tradeRepository.DeleteTradeAsync(id);
-            if (!result)
+            try
             {
-                return NotFound();
+                var result = await _tradeRepository.DeleteTradeAsync(id);
+                if (!result)
+                {
+                    _logger.LogWarning("DeleteTrade: No trade found with ID {TradeId} for deletion.", id);
+                    return NotFound();
+                }
+
+                _logger.LogInformation("DeleteTrade: Trade with ID {TradeId} deleted successfully.", id);
+                return NoContent();
             }
-
-            return NoContent();
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "DeleteTrade: An error occurred while deleting the trade with ID {TradeId}.", id);
+                return StatusCode(500, "Internal server error");
+            }
         }
-        /*  [HttpGet]
-          [Route("list")]
-          public IActionResult Home()
-          {
-              // TODO: find all Trade, add to model
-              return Ok();
-          }
-
-          [HttpGet]
-          [Route("add")]
-          public IActionResult AddTrade([FromBody]Trade trade)
-          {
-              return Ok();
-          }
-
-          [HttpGet]
-          [Route("validate")]
-          public IActionResult Validate([FromBody]Trade trade)
-          {
-              // TODO: check data valid and save to db, after saving return Trade list
-              return Ok();
-          }
-
-          [HttpGet]
-          [Route("update/{id}")]
-          public IActionResult ShowUpdateForm(int id)
-          {
-              // TODO: get Trade by Id and to model then show to the form
-              return Ok();
-          }
-
-          [HttpPost]
-          [Route("update/{id}")]
-          public IActionResult UpdateTrade(int id, [FromBody] Trade trade)
-          {
-              // TODO: check required fields, if valid call service to update Trade and return Trade list
-              return Ok();
-          }
-
-          [HttpDelete]
-          [Route("{id}")]
-          public IActionResult DeleteTrade(int id)
-          {
-              // TODO: Find Trade by Id and delete the Trade, return to Trade list
-              return Ok();
-          }*/
     }
 }

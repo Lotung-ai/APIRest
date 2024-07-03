@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.5572" branch-rate="0.43439999999999995" version="1.9" timestamp="1720039288" lines-covered="725" lines-valid="1301" branches-covered="53" branches-valid="122">
+<coverage line-rate="0.6840999999999999" branch-rate="0.5153" version="1.9" timestamp="1720041004" lines-covered="1159" lines-valid="1694" branches-covered="67" branches-valid="130">
   <sources>
     <source>C:\Users\brandon.ku\</source>
   </sources>
   <packages>
-    <package name="P7CreateRestApi" line-rate="0.3235" branch-rate="0.43439999999999995" complexity="248">
+    <package name="P7CreateRestApi" line-rate="0.4079" branch-rate="0.5153" complexity="256">
       <classes>
         <class name="Program" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Program.cs" line-rate="0" branch-rate="0" complexity="2">
           <methods>
@@ -1318,136 +1318,136 @@
             <line number="28" hits="11" branch="False" />
           </lines>
         </class>
-        <class name="P7CreateRestApi.Domain.Trade" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Domain\Trade.cs" line-rate="0" branch-rate="1" complexity="21">
+        <class name="P7CreateRestApi.Domain.Trade" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Domain\Trade.cs" line-rate="1" branch-rate="1" complexity="21">
           <methods>
-            <method name="get_TradeId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TradeId" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="5" hits="0" branch="False" />
+                <line number="7" hits="20" branch="False" />
               </lines>
             </method>
-            <method name="get_Account" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Account" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="6" hits="0" branch="False" />
+                <line number="11" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_AccountType" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_AccountType" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="7" hits="0" branch="False" />
+                <line number="15" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_BuyQuantity" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_BuyQuantity" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="8" hits="0" branch="False" />
+                <line number="17" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_SellQuantity" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_SellQuantity" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="9" hits="0" branch="False" />
+                <line number="19" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_BuyPrice" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_BuyPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="10" hits="0" branch="False" />
+                <line number="21" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_SellPrice" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_SellPrice" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="11" hits="0" branch="False" />
+                <line number="23" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_TradeDate" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TradeDate" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="12" hits="0" branch="False" />
+                <line number="25" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_TradeSecurity" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TradeSecurity" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="13" hits="0" branch="False" />
+                <line number="29" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_TradeStatus" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_TradeStatus" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="14" hits="0" branch="False" />
+                <line number="33" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_Trader" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Trader" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="15" hits="0" branch="False" />
+                <line number="37" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_Benchmark" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Benchmark" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="16" hits="0" branch="False" />
+                <line number="40" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_Book" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Book" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="17" hits="0" branch="False" />
+                <line number="43" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_CreationName" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_CreationName" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="18" hits="0" branch="False" />
+                <line number="46" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_CreationDate" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_CreationDate" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="19" hits="0" branch="False" />
+                <line number="48" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_RevisionName" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_RevisionName" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="20" hits="0" branch="False" />
+                <line number="51" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_RevisionDate" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_RevisionDate" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="21" hits="0" branch="False" />
+                <line number="53" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_DealName" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_DealName" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="22" hits="0" branch="False" />
+                <line number="56" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_DealType" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_DealType" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="23" hits="0" branch="False" />
+                <line number="59" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_SourceListId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_SourceListId" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="24" hits="0" branch="False" />
+                <line number="62" hits="11" branch="False" />
               </lines>
             </method>
-            <method name="get_Side" signature="()" line-rate="0" branch-rate="1" complexity="1">
+            <method name="get_Side" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="25" hits="0" branch="False" />
+                <line number="65" hits="11" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="5" hits="0" branch="False" />
-            <line number="6" hits="0" branch="False" />
-            <line number="7" hits="0" branch="False" />
-            <line number="8" hits="0" branch="False" />
-            <line number="9" hits="0" branch="False" />
-            <line number="10" hits="0" branch="False" />
-            <line number="11" hits="0" branch="False" />
-            <line number="12" hits="0" branch="False" />
-            <line number="13" hits="0" branch="False" />
-            <line number="14" hits="0" branch="False" />
-            <line number="15" hits="0" branch="False" />
-            <line number="16" hits="0" branch="False" />
-            <line number="17" hits="0" branch="False" />
-            <line number="18" hits="0" branch="False" />
-            <line number="19" hits="0" branch="False" />
-            <line number="20" hits="0" branch="False" />
-            <line number="21" hits="0" branch="False" />
-            <line number="22" hits="0" branch="False" />
-            <line number="23" hits="0" branch="False" />
-            <line number="24" hits="0" branch="False" />
-            <line number="25" hits="0" branch="False" />
+            <line number="7" hits="20" branch="False" />
+            <line number="11" hits="11" branch="False" />
+            <line number="15" hits="11" branch="False" />
+            <line number="17" hits="11" branch="False" />
+            <line number="19" hits="11" branch="False" />
+            <line number="21" hits="11" branch="False" />
+            <line number="23" hits="11" branch="False" />
+            <line number="25" hits="11" branch="False" />
+            <line number="29" hits="11" branch="False" />
+            <line number="33" hits="11" branch="False" />
+            <line number="37" hits="11" branch="False" />
+            <line number="40" hits="11" branch="False" />
+            <line number="43" hits="11" branch="False" />
+            <line number="46" hits="11" branch="False" />
+            <line number="48" hits="11" branch="False" />
+            <line number="51" hits="11" branch="False" />
+            <line number="53" hits="11" branch="False" />
+            <line number="56" hits="11" branch="False" />
+            <line number="59" hits="11" branch="False" />
+            <line number="62" hits="11" branch="False" />
+            <line number="65" hits="11" branch="False" />
           </lines>
         </class>
         <class name="P7CreateRestApi.Domain.User" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Domain\User.cs" line-rate="0" branch-rate="1" complexity="2">
@@ -2868,168 +2868,304 @@
             <line number="130" hits="4" branch="False" />
           </lines>
         </class>
-        <class name="P7CreateRestApi.Controllers.TradeController" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="P7CreateRestApi.Controllers.TradeController" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
-            <method name=".ctor" signature="(P7CreateRestApi.Repositories.ITradeRepository)" line-rate="0" branch-rate="1" complexity="1">
+            <method name=".ctor" signature="(P7CreateRestApi.Repositories.ITradeRepository,Microsoft.Extensions.Logging.ILogger`1&lt;P7CreateRestApi.Controllers.TradeController&gt;)" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="13" hits="0" branch="False" />
-                <line number="14" hits="0" branch="False" />
-                <line number="15" hits="0" branch="False" />
-                <line number="16" hits="0" branch="False" />
+                <line number="15" hits="14" branch="False" />
+                <line number="16" hits="14" branch="False" />
+                <line number="17" hits="14" branch="False" />
+                <line number="18" hits="14" branch="False" />
+                <line number="19" hits="14" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="13" hits="0" branch="False" />
-            <line number="14" hits="0" branch="False" />
-            <line number="15" hits="0" branch="False" />
-            <line number="16" hits="0" branch="False" />
+            <line number="15" hits="14" branch="False" />
+            <line number="16" hits="14" branch="False" />
+            <line number="17" hits="14" branch="False" />
+            <line number="18" hits="14" branch="False" />
+            <line number="19" hits="14" branch="False" />
           </lines>
         </class>
-        <class name="P7CreateRestApi.Controllers.TradeController/&lt;CreateTrade&gt;d__2" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="0" branch-rate="0" complexity="2">
+        <class name="P7CreateRestApi.Controllers.TradeController/&lt;CreateTrade&gt;d__3" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="1" branch-rate="1" complexity="4">
           <methods>
-            <method name="MoveNext" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
               <lines>
-                <line number="19" hits="0" branch="False" />
-                <line number="20" hits="0" branch="True" condition-coverage="0% (0/2)">
+                <line number="23" hits="4" branch="False" />
+                <line number="25" hits="4" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
-                    <condition number="26" type="jump" coverage="0%" />
+                    <condition number="29" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="21" hits="0" branch="False" />
-                <line number="22" hits="0" branch="False" />
-                <line number="25" hits="0" branch="False" />
-                <line number="26" hits="0" branch="False" />
-                <line number="27" hits="0" branch="False" />
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="19" hits="0" branch="False" />
-            <line number="20" hits="0" branch="True" condition-coverage="0% (0/2)">
-              <conditions>
-                <condition number="26" type="jump" coverage="0%" />
-              </conditions>
-            </line>
-            <line number="21" hits="0" branch="False" />
-            <line number="22" hits="0" branch="False" />
-            <line number="25" hits="0" branch="False" />
-            <line number="26" hits="0" branch="False" />
-            <line number="27" hits="0" branch="False" />
-          </lines>
-        </class>
-        <class name="P7CreateRestApi.Controllers.TradeController/&lt;DeleteTrade&gt;d__6" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="0" branch-rate="0" complexity="2">
-          <methods>
-            <method name="MoveNext" signature="()" line-rate="0" branch-rate="0" complexity="2">
-              <lines>
-                <line number="62" hits="0" branch="False" />
-                <line number="63" hits="0" branch="False" />
-                <line number="64" hits="0" branch="True" condition-coverage="0% (0/2)">
+                <line number="26" hits="1" branch="False" />
+                <line number="27" hits="1" branch="False" />
+                <line number="28" hits="1" branch="False" />
+                <line number="31" hits="3" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
-                    <condition number="157" type="jump" coverage="0%" />
+                    <condition number="102" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="65" hits="0" branch="False" />
-                <line number="66" hits="0" branch="False" />
-                <line number="69" hits="0" branch="False" />
-                <line number="70" hits="0" branch="False" />
+                <line number="32" hits="1" branch="False" />
+                <line number="33" hits="1" branch="False" />
+                <line number="34" hits="1" branch="False" />
+                <line number="38" hits="2" branch="False" />
+                <line number="39" hits="2" branch="False" />
+                <line number="40" hits="1" branch="False" />
+                <line number="41" hits="1" branch="False" />
+                <line number="43" hits="1" branch="False" />
+                <line number="44" hits="1" branch="False" />
+                <line number="45" hits="1" branch="False" />
+                <line number="46" hits="1" branch="False" />
+                <line number="48" hits="4" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="62" hits="0" branch="False" />
-            <line number="63" hits="0" branch="False" />
-            <line number="64" hits="0" branch="True" condition-coverage="0% (0/2)">
+            <line number="23" hits="4" branch="False" />
+            <line number="25" hits="4" branch="True" condition-coverage="100% (2/2)">
               <conditions>
-                <condition number="157" type="jump" coverage="0%" />
+                <condition number="29" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="65" hits="0" branch="False" />
-            <line number="66" hits="0" branch="False" />
-            <line number="69" hits="0" branch="False" />
-            <line number="70" hits="0" branch="False" />
+            <line number="26" hits="1" branch="False" />
+            <line number="27" hits="1" branch="False" />
+            <line number="28" hits="1" branch="False" />
+            <line number="31" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="102" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="32" hits="1" branch="False" />
+            <line number="33" hits="1" branch="False" />
+            <line number="34" hits="1" branch="False" />
+            <line number="38" hits="2" branch="False" />
+            <line number="39" hits="2" branch="False" />
+            <line number="40" hits="1" branch="False" />
+            <line number="41" hits="1" branch="False" />
+            <line number="43" hits="1" branch="False" />
+            <line number="44" hits="1" branch="False" />
+            <line number="45" hits="1" branch="False" />
+            <line number="46" hits="1" branch="False" />
+            <line number="48" hits="4" branch="False" />
           </lines>
         </class>
-        <class name="P7CreateRestApi.Controllers.TradeController/&lt;GetAllTrades&gt;d__4" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="0" branch-rate="1" complexity="1">
+        <class name="P7CreateRestApi.Controllers.TradeController/&lt;DeleteTrade&gt;d__7" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="132" hits="3" branch="False" />
+                <line number="134" hits="3" branch="False" />
+                <line number="135" hits="3" branch="False" />
+                <line number="136" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="166" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="137" hits="1" branch="False" />
+                <line number="138" hits="1" branch="False" />
+                <line number="139" hits="1" branch="False" />
+                <line number="142" hits="1" branch="False" />
+                <line number="143" hits="1" branch="False" />
+                <line number="145" hits="1" branch="False" />
+                <line number="146" hits="1" branch="False" />
+                <line number="147" hits="1" branch="False" />
+                <line number="148" hits="1" branch="False" />
+                <line number="150" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="132" hits="3" branch="False" />
+            <line number="134" hits="3" branch="False" />
+            <line number="135" hits="3" branch="False" />
+            <line number="136" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="166" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="137" hits="1" branch="False" />
+            <line number="138" hits="1" branch="False" />
+            <line number="139" hits="1" branch="False" />
+            <line number="142" hits="1" branch="False" />
+            <line number="143" hits="1" branch="False" />
+            <line number="145" hits="1" branch="False" />
+            <line number="146" hits="1" branch="False" />
+            <line number="147" hits="1" branch="False" />
+            <line number="148" hits="1" branch="False" />
+            <line number="150" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Controllers.TradeController/&lt;GetAllTrades&gt;d__5" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="0" branch-rate="1" complexity="1">
               <lines>
-                <line number="43" hits="0" branch="False" />
-                <line number="44" hits="0" branch="False" />
-                <line number="45" hits="0" branch="False" />
-                <line number="46" hits="0" branch="False" />
+                <line number="74" hits="0" branch="False" />
+                <line number="76" hits="0" branch="False" />
+                <line number="77" hits="0" branch="False" />
+                <line number="78" hits="0" branch="False" />
+                <line number="79" hits="0" branch="False" />
+                <line number="81" hits="0" branch="False" />
+                <line number="82" hits="0" branch="False" />
+                <line number="83" hits="0" branch="False" />
+                <line number="84" hits="0" branch="False" />
+                <line number="86" hits="0" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="43" hits="0" branch="False" />
-            <line number="44" hits="0" branch="False" />
-            <line number="45" hits="0" branch="False" />
-            <line number="46" hits="0" branch="False" />
+            <line number="74" hits="0" branch="False" />
+            <line number="76" hits="0" branch="False" />
+            <line number="77" hits="0" branch="False" />
+            <line number="78" hits="0" branch="False" />
+            <line number="79" hits="0" branch="False" />
+            <line number="81" hits="0" branch="False" />
+            <line number="82" hits="0" branch="False" />
+            <line number="83" hits="0" branch="False" />
+            <line number="84" hits="0" branch="False" />
+            <line number="86" hits="0" branch="False" />
           </lines>
         </class>
-        <class name="P7CreateRestApi.Controllers.TradeController/&lt;GetTradeById&gt;d__3" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="0" branch-rate="0" complexity="2">
+        <class name="P7CreateRestApi.Controllers.TradeController/&lt;GetTradeById&gt;d__4" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="1" branch-rate="1" complexity="2">
           <methods>
-            <method name="MoveNext" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
               <lines>
-                <line number="31" hits="0" branch="False" />
-                <line number="32" hits="0" branch="False" />
-                <line number="33" hits="0" branch="True" condition-coverage="0% (0/2)">
+                <line number="52" hits="3" branch="False" />
+                <line number="54" hits="3" branch="False" />
+                <line number="55" hits="3" branch="False" />
+                <line number="56" hits="2" branch="True" condition-coverage="100% (2/2)">
                   <conditions>
-                    <condition number="164" type="jump" coverage="0%" />
+                    <condition number="173" type="jump" coverage="100%" />
                   </conditions>
                 </line>
-                <line number="34" hits="0" branch="False" />
-                <line number="35" hits="0" branch="False" />
-                <line number="38" hits="0" branch="False" />
-                <line number="39" hits="0" branch="False" />
+                <line number="57" hits="1" branch="False" />
+                <line number="58" hits="1" branch="False" />
+                <line number="59" hits="1" branch="False" />
+                <line number="62" hits="1" branch="False" />
+                <line number="63" hits="1" branch="False" />
+                <line number="65" hits="1" branch="False" />
+                <line number="66" hits="1" branch="False" />
+                <line number="67" hits="1" branch="False" />
+                <line number="68" hits="1" branch="False" />
+                <line number="70" hits="3" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="31" hits="0" branch="False" />
-            <line number="32" hits="0" branch="False" />
-            <line number="33" hits="0" branch="True" condition-coverage="0% (0/2)">
+            <line number="52" hits="3" branch="False" />
+            <line number="54" hits="3" branch="False" />
+            <line number="55" hits="3" branch="False" />
+            <line number="56" hits="2" branch="True" condition-coverage="100% (2/2)">
               <conditions>
-                <condition number="164" type="jump" coverage="0%" />
+                <condition number="173" type="jump" coverage="100%" />
               </conditions>
             </line>
-            <line number="34" hits="0" branch="False" />
-            <line number="35" hits="0" branch="False" />
-            <line number="38" hits="0" branch="False" />
-            <line number="39" hits="0" branch="False" />
+            <line number="57" hits="1" branch="False" />
+            <line number="58" hits="1" branch="False" />
+            <line number="59" hits="1" branch="False" />
+            <line number="62" hits="1" branch="False" />
+            <line number="63" hits="1" branch="False" />
+            <line number="65" hits="1" branch="False" />
+            <line number="66" hits="1" branch="False" />
+            <line number="67" hits="1" branch="False" />
+            <line number="68" hits="1" branch="False" />
+            <line number="70" hits="3" branch="False" />
           </lines>
         </class>
-        <class name="P7CreateRestApi.Controllers.TradeController/&lt;UpdateTrade&gt;d__5" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="0" branch-rate="0" complexity="2">
+        <class name="P7CreateRestApi.Controllers.TradeController/&lt;UpdateTrade&gt;d__6" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\TradeController.cs" line-rate="0.7777" branch-rate="0.75" complexity="8">
           <methods>
-            <method name="MoveNext" signature="()" line-rate="0" branch-rate="0" complexity="2">
+            <method name="MoveNext" signature="()" line-rate="0.7777" branch-rate="0.75" complexity="8">
               <lines>
-                <line number="50" hits="0" branch="False" />
-                <line number="51" hits="0" branch="True" condition-coverage="0% (0/2)">
+                <line number="90" hits="4" branch="False" />
+                <line number="92" hits="4" branch="True" condition-coverage="50% (1/2)">
                   <conditions>
-                    <condition number="39" type="jump" coverage="0%" />
+                    <condition number="29" type="jump" coverage="50%" />
                   </conditions>
                 </line>
-                <line number="52" hits="0" branch="False" />
-                <line number="53" hits="0" branch="False" />
-                <line number="56" hits="0" branch="False" />
-                <line number="57" hits="0" branch="False" />
-                <line number="58" hits="0" branch="False" />
+                <line number="93" hits="0" branch="False" />
+                <line number="94" hits="0" branch="False" />
+                <line number="95" hits="0" branch="False" />
+                <line number="98" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="105" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="99" hits="1" branch="False" />
+                <line number="100" hits="1" branch="False" />
+                <line number="101" hits="1" branch="False" />
+                <line number="102" hits="1" branch="False" />
+                <line number="105" hits="3" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="247" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="106" hits="0" branch="False" />
+                <line number="107" hits="0" branch="False" />
+                <line number="108" hits="0" branch="False" />
+                <line number="112" hits="3" branch="False" />
+                <line number="113" hits="3" branch="False" />
+                <line number="114" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="482" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="115" hits="1" branch="False" />
+                <line number="116" hits="1" branch="False" />
+                <line number="117" hits="1" branch="False" />
+                <line number="120" hits="1" branch="False" />
+                <line number="121" hits="1" branch="False" />
+                <line number="123" hits="1" branch="False" />
+                <line number="124" hits="1" branch="False" />
+                <line number="125" hits="1" branch="False" />
+                <line number="126" hits="1" branch="False" />
+                <line number="128" hits="4" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="50" hits="0" branch="False" />
-            <line number="51" hits="0" branch="True" condition-coverage="0% (0/2)">
+            <line number="90" hits="4" branch="False" />
+            <line number="92" hits="4" branch="True" condition-coverage="50% (1/2)">
               <conditions>
-                <condition number="39" type="jump" coverage="0%" />
+                <condition number="29" type="jump" coverage="50%" />
               </conditions>
             </line>
-            <line number="52" hits="0" branch="False" />
-            <line number="53" hits="0" branch="False" />
-            <line number="56" hits="0" branch="False" />
-            <line number="57" hits="0" branch="False" />
-            <line number="58" hits="0" branch="False" />
+            <line number="93" hits="0" branch="False" />
+            <line number="94" hits="0" branch="False" />
+            <line number="95" hits="0" branch="False" />
+            <line number="98" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="105" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="99" hits="1" branch="False" />
+            <line number="100" hits="1" branch="False" />
+            <line number="101" hits="1" branch="False" />
+            <line number="102" hits="1" branch="False" />
+            <line number="105" hits="3" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="247" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="106" hits="0" branch="False" />
+            <line number="107" hits="0" branch="False" />
+            <line number="108" hits="0" branch="False" />
+            <line number="112" hits="3" branch="False" />
+            <line number="113" hits="3" branch="False" />
+            <line number="114" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="482" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="115" hits="1" branch="False" />
+            <line number="116" hits="1" branch="False" />
+            <line number="117" hits="1" branch="False" />
+            <line number="120" hits="1" branch="False" />
+            <line number="121" hits="1" branch="False" />
+            <line number="123" hits="1" branch="False" />
+            <line number="124" hits="1" branch="False" />
+            <line number="125" hits="1" branch="False" />
+            <line number="126" hits="1" branch="False" />
+            <line number="128" hits="4" branch="False" />
           </lines>
         </class>
         <class name="P7CreateRestApi.Controllers.UserController" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi\Controllers\UserController.cs" line-rate="0" branch-rate="1" complexity="1">
@@ -3340,7 +3476,7 @@
         </class>
       </classes>
     </package>
-    <package name="P7CreateRestApi.Tests" line-rate="0.9976999999999999" branch-rate="1" complexity="54">
+    <package name="P7CreateRestApi.Tests" line-rate="0.9987" branch-rate="1" complexity="69">
       <classes>
         <class name="AutoGeneratedProgram" filename=".nuget\packages\microsoft.net.test.sdk\17.8.0\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.Program.cs" line-rate="0" branch-rate="1" complexity="1">
           <methods>
@@ -4770,6 +4906,838 @@
             <line number="233" hits="1" branch="False" />
             <line number="235" hits="1" branch="False" />
             <line number="237" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="21" hits="14" branch="False" />
+                <line number="22" hits="14" branch="False" />
+                <line number="24" hits="14" branch="False" />
+                <line number="25" hits="14" branch="False" />
+                <line number="26" hits="14" branch="False" />
+                <line number="27" hits="14" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="21" hits="14" branch="False" />
+            <line number="22" hits="14" branch="False" />
+            <line number="24" hits="14" branch="False" />
+            <line number="25" hits="14" branch="False" />
+            <line number="26" hits="14" branch="False" />
+            <line number="27" hits="14" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;CreateTrade_ShouldReturnBadRequest_WhenModelStateIsInvalid&gt;d__6" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="88" hits="1" branch="False" />
+                <line number="90" hits="1" branch="False" />
+                <line number="91" hits="1" branch="False" />
+                <line number="92" hits="1" branch="False" />
+                <line number="93" hits="1" branch="False" />
+                <line number="94" hits="1" branch="False" />
+                <line number="95" hits="1" branch="False" />
+                <line number="96" hits="1" branch="False" />
+                <line number="97" hits="1" branch="False" />
+                <line number="98" hits="1" branch="False" />
+                <line number="99" hits="1" branch="False" />
+                <line number="100" hits="1" branch="False" />
+                <line number="101" hits="1" branch="False" />
+                <line number="102" hits="1" branch="False" />
+                <line number="103" hits="1" branch="False" />
+                <line number="104" hits="1" branch="False" />
+                <line number="105" hits="1" branch="False" />
+                <line number="106" hits="1" branch="False" />
+                <line number="107" hits="1" branch="False" />
+                <line number="108" hits="1" branch="False" />
+                <line number="109" hits="1" branch="False" />
+                <line number="110" hits="1" branch="False" />
+                <line number="111" hits="1" branch="False" />
+                <line number="112" hits="1" branch="False" />
+                <line number="113" hits="1" branch="False" />
+                <line number="114" hits="1" branch="False" />
+                <line number="117" hits="1" branch="False" />
+                <line number="120" hits="1" branch="False" />
+                <line number="121" hits="1" branch="False" />
+                <line number="122" hits="1" branch="False" />
+                <line number="123" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="88" hits="1" branch="False" />
+            <line number="90" hits="1" branch="False" />
+            <line number="91" hits="1" branch="False" />
+            <line number="92" hits="1" branch="False" />
+            <line number="93" hits="1" branch="False" />
+            <line number="94" hits="1" branch="False" />
+            <line number="95" hits="1" branch="False" />
+            <line number="96" hits="1" branch="False" />
+            <line number="97" hits="1" branch="False" />
+            <line number="98" hits="1" branch="False" />
+            <line number="99" hits="1" branch="False" />
+            <line number="100" hits="1" branch="False" />
+            <line number="101" hits="1" branch="False" />
+            <line number="102" hits="1" branch="False" />
+            <line number="103" hits="1" branch="False" />
+            <line number="104" hits="1" branch="False" />
+            <line number="105" hits="1" branch="False" />
+            <line number="106" hits="1" branch="False" />
+            <line number="107" hits="1" branch="False" />
+            <line number="108" hits="1" branch="False" />
+            <line number="109" hits="1" branch="False" />
+            <line number="110" hits="1" branch="False" />
+            <line number="111" hits="1" branch="False" />
+            <line number="112" hits="1" branch="False" />
+            <line number="113" hits="1" branch="False" />
+            <line number="114" hits="1" branch="False" />
+            <line number="117" hits="1" branch="False" />
+            <line number="120" hits="1" branch="False" />
+            <line number="121" hits="1" branch="False" />
+            <line number="122" hits="1" branch="False" />
+            <line number="123" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;CreateTrade_ShouldReturnBadRequest_WhenTradeIsNull&gt;d__5" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="72" hits="1" branch="False" />
+                <line number="74" hits="1" branch="False" />
+                <line number="77" hits="1" branch="False" />
+                <line number="80" hits="1" branch="False" />
+                <line number="81" hits="1" branch="False" />
+                <line number="82" hits="1" branch="False" />
+                <line number="83" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="72" hits="1" branch="False" />
+            <line number="74" hits="1" branch="False" />
+            <line number="77" hits="1" branch="False" />
+            <line number="80" hits="1" branch="False" />
+            <line number="81" hits="1" branch="False" />
+            <line number="82" hits="1" branch="False" />
+            <line number="83" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;CreateTrade_ShouldReturnCreated_WhenTradeIsValid&gt;d__4" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="32" hits="1" branch="False" />
+                <line number="34" hits="1" branch="False" />
+                <line number="35" hits="1" branch="False" />
+                <line number="36" hits="1" branch="False" />
+                <line number="37" hits="1" branch="False" />
+                <line number="38" hits="1" branch="False" />
+                <line number="39" hits="1" branch="False" />
+                <line number="40" hits="1" branch="False" />
+                <line number="41" hits="1" branch="False" />
+                <line number="42" hits="1" branch="False" />
+                <line number="43" hits="1" branch="False" />
+                <line number="44" hits="1" branch="False" />
+                <line number="45" hits="1" branch="False" />
+                <line number="46" hits="1" branch="False" />
+                <line number="47" hits="1" branch="False" />
+                <line number="48" hits="1" branch="False" />
+                <line number="49" hits="1" branch="False" />
+                <line number="50" hits="1" branch="False" />
+                <line number="51" hits="1" branch="False" />
+                <line number="52" hits="1" branch="False" />
+                <line number="53" hits="1" branch="False" />
+                <line number="54" hits="1" branch="False" />
+                <line number="55" hits="1" branch="False" />
+                <line number="56" hits="1" branch="False" />
+                <line number="57" hits="1" branch="False" />
+                <line number="58" hits="1" branch="False" />
+                <line number="61" hits="1" branch="False" />
+                <line number="64" hits="1" branch="False" />
+                <line number="65" hits="1" branch="False" />
+                <line number="66" hits="1" branch="False" />
+                <line number="67" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="32" hits="1" branch="False" />
+            <line number="34" hits="1" branch="False" />
+            <line number="35" hits="1" branch="False" />
+            <line number="36" hits="1" branch="False" />
+            <line number="37" hits="1" branch="False" />
+            <line number="38" hits="1" branch="False" />
+            <line number="39" hits="1" branch="False" />
+            <line number="40" hits="1" branch="False" />
+            <line number="41" hits="1" branch="False" />
+            <line number="42" hits="1" branch="False" />
+            <line number="43" hits="1" branch="False" />
+            <line number="44" hits="1" branch="False" />
+            <line number="45" hits="1" branch="False" />
+            <line number="46" hits="1" branch="False" />
+            <line number="47" hits="1" branch="False" />
+            <line number="48" hits="1" branch="False" />
+            <line number="49" hits="1" branch="False" />
+            <line number="50" hits="1" branch="False" />
+            <line number="51" hits="1" branch="False" />
+            <line number="52" hits="1" branch="False" />
+            <line number="53" hits="1" branch="False" />
+            <line number="54" hits="1" branch="False" />
+            <line number="55" hits="1" branch="False" />
+            <line number="56" hits="1" branch="False" />
+            <line number="57" hits="1" branch="False" />
+            <line number="58" hits="1" branch="False" />
+            <line number="61" hits="1" branch="False" />
+            <line number="64" hits="1" branch="False" />
+            <line number="65" hits="1" branch="False" />
+            <line number="66" hits="1" branch="False" />
+            <line number="67" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;CreateTrade_ShouldReturnInternalServerError_WhenExceptionIsThrown&gt;d__7" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="128" hits="1" branch="False" />
+                <line number="130" hits="1" branch="False" />
+                <line number="131" hits="1" branch="False" />
+                <line number="132" hits="1" branch="False" />
+                <line number="133" hits="1" branch="False" />
+                <line number="134" hits="1" branch="False" />
+                <line number="135" hits="1" branch="False" />
+                <line number="136" hits="1" branch="False" />
+                <line number="137" hits="1" branch="False" />
+                <line number="138" hits="1" branch="False" />
+                <line number="139" hits="1" branch="False" />
+                <line number="140" hits="1" branch="False" />
+                <line number="141" hits="1" branch="False" />
+                <line number="142" hits="1" branch="False" />
+                <line number="143" hits="1" branch="False" />
+                <line number="144" hits="1" branch="False" />
+                <line number="145" hits="1" branch="False" />
+                <line number="146" hits="1" branch="False" />
+                <line number="147" hits="1" branch="False" />
+                <line number="148" hits="1" branch="False" />
+                <line number="149" hits="1" branch="False" />
+                <line number="150" hits="1" branch="False" />
+                <line number="151" hits="1" branch="False" />
+                <line number="152" hits="1" branch="False" />
+                <line number="153" hits="1" branch="False" />
+                <line number="155" hits="1" branch="False" />
+                <line number="156" hits="1" branch="False" />
+                <line number="159" hits="1" branch="False" />
+                <line number="162" hits="1" branch="False" />
+                <line number="163" hits="1" branch="False" />
+                <line number="164" hits="1" branch="False" />
+                <line number="165" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="128" hits="1" branch="False" />
+            <line number="130" hits="1" branch="False" />
+            <line number="131" hits="1" branch="False" />
+            <line number="132" hits="1" branch="False" />
+            <line number="133" hits="1" branch="False" />
+            <line number="134" hits="1" branch="False" />
+            <line number="135" hits="1" branch="False" />
+            <line number="136" hits="1" branch="False" />
+            <line number="137" hits="1" branch="False" />
+            <line number="138" hits="1" branch="False" />
+            <line number="139" hits="1" branch="False" />
+            <line number="140" hits="1" branch="False" />
+            <line number="141" hits="1" branch="False" />
+            <line number="142" hits="1" branch="False" />
+            <line number="143" hits="1" branch="False" />
+            <line number="144" hits="1" branch="False" />
+            <line number="145" hits="1" branch="False" />
+            <line number="146" hits="1" branch="False" />
+            <line number="147" hits="1" branch="False" />
+            <line number="148" hits="1" branch="False" />
+            <line number="149" hits="1" branch="False" />
+            <line number="150" hits="1" branch="False" />
+            <line number="151" hits="1" branch="False" />
+            <line number="152" hits="1" branch="False" />
+            <line number="153" hits="1" branch="False" />
+            <line number="155" hits="1" branch="False" />
+            <line number="156" hits="1" branch="False" />
+            <line number="159" hits="1" branch="False" />
+            <line number="162" hits="1" branch="False" />
+            <line number="163" hits="1" branch="False" />
+            <line number="164" hits="1" branch="False" />
+            <line number="165" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;DeleteTrade_ShouldReturnInternalServerError_WhenExceptionIsThrown&gt;d__17" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="478" hits="1" branch="False" />
+                <line number="480" hits="1" branch="False" />
+                <line number="482" hits="1" branch="False" />
+                <line number="483" hits="1" branch="False" />
+                <line number="486" hits="1" branch="False" />
+                <line number="489" hits="1" branch="False" />
+                <line number="490" hits="1" branch="False" />
+                <line number="491" hits="1" branch="False" />
+                <line number="492" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="478" hits="1" branch="False" />
+            <line number="480" hits="1" branch="False" />
+            <line number="482" hits="1" branch="False" />
+            <line number="483" hits="1" branch="False" />
+            <line number="486" hits="1" branch="False" />
+            <line number="489" hits="1" branch="False" />
+            <line number="490" hits="1" branch="False" />
+            <line number="491" hits="1" branch="False" />
+            <line number="492" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;DeleteTrade_ShouldReturnNoContent_WhenDeleteIsSuccessful&gt;d__15" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="447" hits="1" branch="False" />
+                <line number="449" hits="1" branch="False" />
+                <line number="450" hits="1" branch="False" />
+                <line number="453" hits="1" branch="False" />
+                <line number="456" hits="1" branch="False" />
+                <line number="457" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="447" hits="1" branch="False" />
+            <line number="449" hits="1" branch="False" />
+            <line number="450" hits="1" branch="False" />
+            <line number="453" hits="1" branch="False" />
+            <line number="456" hits="1" branch="False" />
+            <line number="457" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;DeleteTrade_ShouldReturnNotFound_WhenTradeDoesNotExist&gt;d__16" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="462" hits="1" branch="False" />
+                <line number="464" hits="1" branch="False" />
+                <line number="465" hits="1" branch="False" />
+                <line number="468" hits="1" branch="False" />
+                <line number="471" hits="1" branch="False" />
+                <line number="472" hits="1" branch="False" />
+                <line number="473" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="462" hits="1" branch="False" />
+            <line number="464" hits="1" branch="False" />
+            <line number="465" hits="1" branch="False" />
+            <line number="468" hits="1" branch="False" />
+            <line number="471" hits="1" branch="False" />
+            <line number="472" hits="1" branch="False" />
+            <line number="473" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;GetTradeById_ShouldReturnInternalServerError_WhenExceptionIsThrown&gt;d__10" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="245" hits="1" branch="False" />
+                <line number="247" hits="1" branch="False" />
+                <line number="250" hits="1" branch="False" />
+                <line number="253" hits="1" branch="False" />
+                <line number="254" hits="1" branch="False" />
+                <line number="255" hits="1" branch="False" />
+                <line number="256" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="245" hits="1" branch="False" />
+            <line number="247" hits="1" branch="False" />
+            <line number="250" hits="1" branch="False" />
+            <line number="253" hits="1" branch="False" />
+            <line number="254" hits="1" branch="False" />
+            <line number="255" hits="1" branch="False" />
+            <line number="256" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;GetTradeById_ShouldReturnNotFound_WhenTradeDoesNotExist&gt;d__9" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="230" hits="1" branch="False" />
+                <line number="232" hits="1" branch="False" />
+                <line number="235" hits="1" branch="False" />
+                <line number="238" hits="1" branch="False" />
+                <line number="239" hits="1" branch="False" />
+                <line number="240" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="230" hits="1" branch="False" />
+            <line number="232" hits="1" branch="False" />
+            <line number="235" hits="1" branch="False" />
+            <line number="238" hits="1" branch="False" />
+            <line number="239" hits="1" branch="False" />
+            <line number="240" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;GetTradeById_ShouldReturnOk_WhenTradeExists&gt;d__8" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="170" hits="1" branch="False" />
+                <line number="172" hits="1" branch="False" />
+                <line number="173" hits="1" branch="False" />
+                <line number="174" hits="1" branch="False" />
+                <line number="175" hits="1" branch="False" />
+                <line number="176" hits="1" branch="False" />
+                <line number="177" hits="1" branch="False" />
+                <line number="178" hits="1" branch="False" />
+                <line number="179" hits="1" branch="False" />
+                <line number="180" hits="1" branch="False" />
+                <line number="181" hits="1" branch="False" />
+                <line number="182" hits="1" branch="False" />
+                <line number="183" hits="1" branch="False" />
+                <line number="184" hits="1" branch="False" />
+                <line number="185" hits="1" branch="False" />
+                <line number="186" hits="1" branch="False" />
+                <line number="187" hits="1" branch="False" />
+                <line number="188" hits="1" branch="False" />
+                <line number="189" hits="1" branch="False" />
+                <line number="190" hits="1" branch="False" />
+                <line number="191" hits="1" branch="False" />
+                <line number="192" hits="1" branch="False" />
+                <line number="193" hits="1" branch="False" />
+                <line number="194" hits="1" branch="False" />
+                <line number="195" hits="1" branch="False" />
+                <line number="196" hits="1" branch="False" />
+                <line number="199" hits="1" branch="False" />
+                <line number="202" hits="1" branch="False" />
+                <line number="203" hits="1" branch="False" />
+                <line number="204" hits="1" branch="False" />
+                <line number="205" hits="1" branch="False" />
+                <line number="206" hits="1" branch="False" />
+                <line number="207" hits="1" branch="False" />
+                <line number="208" hits="1" branch="False" />
+                <line number="209" hits="1" branch="False" />
+                <line number="210" hits="1" branch="False" />
+                <line number="211" hits="1" branch="False" />
+                <line number="212" hits="1" branch="False" />
+                <line number="213" hits="1" branch="False" />
+                <line number="214" hits="1" branch="False" />
+                <line number="215" hits="1" branch="False" />
+                <line number="216" hits="1" branch="False" />
+                <line number="217" hits="1" branch="False" />
+                <line number="218" hits="1" branch="False" />
+                <line number="219" hits="1" branch="False" />
+                <line number="220" hits="1" branch="False" />
+                <line number="221" hits="1" branch="False" />
+                <line number="222" hits="1" branch="False" />
+                <line number="223" hits="1" branch="False" />
+                <line number="224" hits="1" branch="False" />
+                <line number="225" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="170" hits="1" branch="False" />
+            <line number="172" hits="1" branch="False" />
+            <line number="173" hits="1" branch="False" />
+            <line number="174" hits="1" branch="False" />
+            <line number="175" hits="1" branch="False" />
+            <line number="176" hits="1" branch="False" />
+            <line number="177" hits="1" branch="False" />
+            <line number="178" hits="1" branch="False" />
+            <line number="179" hits="1" branch="False" />
+            <line number="180" hits="1" branch="False" />
+            <line number="181" hits="1" branch="False" />
+            <line number="182" hits="1" branch="False" />
+            <line number="183" hits="1" branch="False" />
+            <line number="184" hits="1" branch="False" />
+            <line number="185" hits="1" branch="False" />
+            <line number="186" hits="1" branch="False" />
+            <line number="187" hits="1" branch="False" />
+            <line number="188" hits="1" branch="False" />
+            <line number="189" hits="1" branch="False" />
+            <line number="190" hits="1" branch="False" />
+            <line number="191" hits="1" branch="False" />
+            <line number="192" hits="1" branch="False" />
+            <line number="193" hits="1" branch="False" />
+            <line number="194" hits="1" branch="False" />
+            <line number="195" hits="1" branch="False" />
+            <line number="196" hits="1" branch="False" />
+            <line number="199" hits="1" branch="False" />
+            <line number="202" hits="1" branch="False" />
+            <line number="203" hits="1" branch="False" />
+            <line number="204" hits="1" branch="False" />
+            <line number="205" hits="1" branch="False" />
+            <line number="206" hits="1" branch="False" />
+            <line number="207" hits="1" branch="False" />
+            <line number="208" hits="1" branch="False" />
+            <line number="209" hits="1" branch="False" />
+            <line number="210" hits="1" branch="False" />
+            <line number="211" hits="1" branch="False" />
+            <line number="212" hits="1" branch="False" />
+            <line number="213" hits="1" branch="False" />
+            <line number="214" hits="1" branch="False" />
+            <line number="215" hits="1" branch="False" />
+            <line number="216" hits="1" branch="False" />
+            <line number="217" hits="1" branch="False" />
+            <line number="218" hits="1" branch="False" />
+            <line number="219" hits="1" branch="False" />
+            <line number="220" hits="1" branch="False" />
+            <line number="221" hits="1" branch="False" />
+            <line number="222" hits="1" branch="False" />
+            <line number="223" hits="1" branch="False" />
+            <line number="224" hits="1" branch="False" />
+            <line number="225" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;UpdateTrade_ShouldReturnBadRequest_WhenIdMismatchOccurs&gt;d__12" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="326" hits="1" branch="False" />
+                <line number="328" hits="1" branch="False" />
+                <line number="329" hits="1" branch="False" />
+                <line number="330" hits="1" branch="False" />
+                <line number="331" hits="1" branch="False" />
+                <line number="332" hits="1" branch="False" />
+                <line number="333" hits="1" branch="False" />
+                <line number="334" hits="1" branch="False" />
+                <line number="335" hits="1" branch="False" />
+                <line number="336" hits="1" branch="False" />
+                <line number="337" hits="1" branch="False" />
+                <line number="338" hits="1" branch="False" />
+                <line number="339" hits="1" branch="False" />
+                <line number="340" hits="1" branch="False" />
+                <line number="341" hits="1" branch="False" />
+                <line number="342" hits="1" branch="False" />
+                <line number="343" hits="1" branch="False" />
+                <line number="344" hits="1" branch="False" />
+                <line number="345" hits="1" branch="False" />
+                <line number="346" hits="1" branch="False" />
+                <line number="347" hits="1" branch="False" />
+                <line number="348" hits="1" branch="False" />
+                <line number="349" hits="1" branch="False" />
+                <line number="350" hits="1" branch="False" />
+                <line number="351" hits="1" branch="False" />
+                <line number="354" hits="1" branch="False" />
+                <line number="357" hits="1" branch="False" />
+                <line number="358" hits="1" branch="False" />
+                <line number="359" hits="1" branch="False" />
+                <line number="360" hits="1" branch="False" />
+                <line number="361" hits="1" branch="False" />
+                <line number="362" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="326" hits="1" branch="False" />
+            <line number="328" hits="1" branch="False" />
+            <line number="329" hits="1" branch="False" />
+            <line number="330" hits="1" branch="False" />
+            <line number="331" hits="1" branch="False" />
+            <line number="332" hits="1" branch="False" />
+            <line number="333" hits="1" branch="False" />
+            <line number="334" hits="1" branch="False" />
+            <line number="335" hits="1" branch="False" />
+            <line number="336" hits="1" branch="False" />
+            <line number="337" hits="1" branch="False" />
+            <line number="338" hits="1" branch="False" />
+            <line number="339" hits="1" branch="False" />
+            <line number="340" hits="1" branch="False" />
+            <line number="341" hits="1" branch="False" />
+            <line number="342" hits="1" branch="False" />
+            <line number="343" hits="1" branch="False" />
+            <line number="344" hits="1" branch="False" />
+            <line number="345" hits="1" branch="False" />
+            <line number="346" hits="1" branch="False" />
+            <line number="347" hits="1" branch="False" />
+            <line number="348" hits="1" branch="False" />
+            <line number="349" hits="1" branch="False" />
+            <line number="350" hits="1" branch="False" />
+            <line number="351" hits="1" branch="False" />
+            <line number="354" hits="1" branch="False" />
+            <line number="357" hits="1" branch="False" />
+            <line number="358" hits="1" branch="False" />
+            <line number="359" hits="1" branch="False" />
+            <line number="360" hits="1" branch="False" />
+            <line number="361" hits="1" branch="False" />
+            <line number="362" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;UpdateTrade_ShouldReturnInternalServerError_WhenExceptionIsThrown&gt;d__14" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="406" hits="1" branch="False" />
+                <line number="408" hits="1" branch="False" />
+                <line number="409" hits="1" branch="False" />
+                <line number="410" hits="1" branch="False" />
+                <line number="411" hits="1" branch="False" />
+                <line number="412" hits="1" branch="False" />
+                <line number="413" hits="1" branch="False" />
+                <line number="414" hits="1" branch="False" />
+                <line number="415" hits="1" branch="False" />
+                <line number="416" hits="1" branch="False" />
+                <line number="417" hits="1" branch="False" />
+                <line number="418" hits="1" branch="False" />
+                <line number="419" hits="1" branch="False" />
+                <line number="420" hits="1" branch="False" />
+                <line number="421" hits="1" branch="False" />
+                <line number="422" hits="1" branch="False" />
+                <line number="423" hits="1" branch="False" />
+                <line number="424" hits="1" branch="False" />
+                <line number="425" hits="1" branch="False" />
+                <line number="426" hits="1" branch="False" />
+                <line number="427" hits="1" branch="False" />
+                <line number="428" hits="1" branch="False" />
+                <line number="429" hits="1" branch="False" />
+                <line number="430" hits="1" branch="False" />
+                <line number="431" hits="1" branch="False" />
+                <line number="433" hits="1" branch="False" />
+                <line number="436" hits="1" branch="False" />
+                <line number="439" hits="1" branch="False" />
+                <line number="440" hits="1" branch="False" />
+                <line number="441" hits="1" branch="False" />
+                <line number="442" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="406" hits="1" branch="False" />
+            <line number="408" hits="1" branch="False" />
+            <line number="409" hits="1" branch="False" />
+            <line number="410" hits="1" branch="False" />
+            <line number="411" hits="1" branch="False" />
+            <line number="412" hits="1" branch="False" />
+            <line number="413" hits="1" branch="False" />
+            <line number="414" hits="1" branch="False" />
+            <line number="415" hits="1" branch="False" />
+            <line number="416" hits="1" branch="False" />
+            <line number="417" hits="1" branch="False" />
+            <line number="418" hits="1" branch="False" />
+            <line number="419" hits="1" branch="False" />
+            <line number="420" hits="1" branch="False" />
+            <line number="421" hits="1" branch="False" />
+            <line number="422" hits="1" branch="False" />
+            <line number="423" hits="1" branch="False" />
+            <line number="424" hits="1" branch="False" />
+            <line number="425" hits="1" branch="False" />
+            <line number="426" hits="1" branch="False" />
+            <line number="427" hits="1" branch="False" />
+            <line number="428" hits="1" branch="False" />
+            <line number="429" hits="1" branch="False" />
+            <line number="430" hits="1" branch="False" />
+            <line number="431" hits="1" branch="False" />
+            <line number="433" hits="1" branch="False" />
+            <line number="436" hits="1" branch="False" />
+            <line number="439" hits="1" branch="False" />
+            <line number="440" hits="1" branch="False" />
+            <line number="441" hits="1" branch="False" />
+            <line number="442" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;UpdateTrade_ShouldReturnNotFound_WhenTradeDoesNotExist&gt;d__13" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="367" hits="1" branch="False" />
+                <line number="369" hits="1" branch="False" />
+                <line number="370" hits="1" branch="False" />
+                <line number="371" hits="1" branch="False" />
+                <line number="372" hits="1" branch="False" />
+                <line number="373" hits="1" branch="False" />
+                <line number="374" hits="1" branch="False" />
+                <line number="375" hits="1" branch="False" />
+                <line number="376" hits="1" branch="False" />
+                <line number="377" hits="1" branch="False" />
+                <line number="378" hits="1" branch="False" />
+                <line number="379" hits="1" branch="False" />
+                <line number="380" hits="1" branch="False" />
+                <line number="381" hits="1" branch="False" />
+                <line number="382" hits="1" branch="False" />
+                <line number="383" hits="1" branch="False" />
+                <line number="384" hits="1" branch="False" />
+                <line number="385" hits="1" branch="False" />
+                <line number="386" hits="1" branch="False" />
+                <line number="387" hits="1" branch="False" />
+                <line number="388" hits="1" branch="False" />
+                <line number="389" hits="1" branch="False" />
+                <line number="390" hits="1" branch="False" />
+                <line number="391" hits="1" branch="False" />
+                <line number="392" hits="1" branch="False" />
+                <line number="393" hits="1" branch="False" />
+                <line number="396" hits="1" branch="False" />
+                <line number="399" hits="1" branch="False" />
+                <line number="400" hits="1" branch="False" />
+                <line number="401" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="367" hits="1" branch="False" />
+            <line number="369" hits="1" branch="False" />
+            <line number="370" hits="1" branch="False" />
+            <line number="371" hits="1" branch="False" />
+            <line number="372" hits="1" branch="False" />
+            <line number="373" hits="1" branch="False" />
+            <line number="374" hits="1" branch="False" />
+            <line number="375" hits="1" branch="False" />
+            <line number="376" hits="1" branch="False" />
+            <line number="377" hits="1" branch="False" />
+            <line number="378" hits="1" branch="False" />
+            <line number="379" hits="1" branch="False" />
+            <line number="380" hits="1" branch="False" />
+            <line number="381" hits="1" branch="False" />
+            <line number="382" hits="1" branch="False" />
+            <line number="383" hits="1" branch="False" />
+            <line number="384" hits="1" branch="False" />
+            <line number="385" hits="1" branch="False" />
+            <line number="386" hits="1" branch="False" />
+            <line number="387" hits="1" branch="False" />
+            <line number="388" hits="1" branch="False" />
+            <line number="389" hits="1" branch="False" />
+            <line number="390" hits="1" branch="False" />
+            <line number="391" hits="1" branch="False" />
+            <line number="392" hits="1" branch="False" />
+            <line number="393" hits="1" branch="False" />
+            <line number="396" hits="1" branch="False" />
+            <line number="399" hits="1" branch="False" />
+            <line number="400" hits="1" branch="False" />
+            <line number="401" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="P7CreateRestApi.Tests.TradeControllerTests/&lt;UpdateTrade_ShouldReturnOk_WhenUpdateIsSuccessful&gt;d__11" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\TradeControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="261" hits="1" branch="False" />
+                <line number="263" hits="1" branch="False" />
+                <line number="264" hits="1" branch="False" />
+                <line number="265" hits="1" branch="False" />
+                <line number="266" hits="1" branch="False" />
+                <line number="267" hits="1" branch="False" />
+                <line number="268" hits="1" branch="False" />
+                <line number="269" hits="1" branch="False" />
+                <line number="270" hits="1" branch="False" />
+                <line number="271" hits="1" branch="False" />
+                <line number="272" hits="1" branch="False" />
+                <line number="273" hits="1" branch="False" />
+                <line number="274" hits="1" branch="False" />
+                <line number="275" hits="1" branch="False" />
+                <line number="276" hits="1" branch="False" />
+                <line number="277" hits="1" branch="False" />
+                <line number="278" hits="1" branch="False" />
+                <line number="279" hits="1" branch="False" />
+                <line number="280" hits="1" branch="False" />
+                <line number="281" hits="1" branch="False" />
+                <line number="282" hits="1" branch="False" />
+                <line number="283" hits="1" branch="False" />
+                <line number="284" hits="1" branch="False" />
+                <line number="285" hits="1" branch="False" />
+                <line number="286" hits="1" branch="False" />
+                <line number="287" hits="1" branch="False" />
+                <line number="288" hits="1" branch="False" />
+                <line number="289" hits="1" branch="False" />
+                <line number="290" hits="1" branch="False" />
+                <line number="291" hits="1" branch="False" />
+                <line number="292" hits="1" branch="False" />
+                <line number="293" hits="1" branch="False" />
+                <line number="294" hits="1" branch="False" />
+                <line number="295" hits="1" branch="False" />
+                <line number="296" hits="1" branch="False" />
+                <line number="297" hits="1" branch="False" />
+                <line number="298" hits="1" branch="False" />
+                <line number="299" hits="1" branch="False" />
+                <line number="300" hits="1" branch="False" />
+                <line number="301" hits="1" branch="False" />
+                <line number="302" hits="1" branch="False" />
+                <line number="303" hits="1" branch="False" />
+                <line number="304" hits="1" branch="False" />
+                <line number="305" hits="1" branch="False" />
+                <line number="306" hits="1" branch="False" />
+                <line number="307" hits="1" branch="False" />
+                <line number="308" hits="1" branch="False" />
+                <line number="309" hits="1" branch="False" />
+                <line number="310" hits="1" branch="False" />
+                <line number="312" hits="1" branch="False" />
+                <line number="313" hits="1" branch="False" />
+                <line number="316" hits="1" branch="False" />
+                <line number="319" hits="1" branch="False" />
+                <line number="320" hits="1" branch="False" />
+                <line number="321" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="261" hits="1" branch="False" />
+            <line number="263" hits="1" branch="False" />
+            <line number="264" hits="1" branch="False" />
+            <line number="265" hits="1" branch="False" />
+            <line number="266" hits="1" branch="False" />
+            <line number="267" hits="1" branch="False" />
+            <line number="268" hits="1" branch="False" />
+            <line number="269" hits="1" branch="False" />
+            <line number="270" hits="1" branch="False" />
+            <line number="271" hits="1" branch="False" />
+            <line number="272" hits="1" branch="False" />
+            <line number="273" hits="1" branch="False" />
+            <line number="274" hits="1" branch="False" />
+            <line number="275" hits="1" branch="False" />
+            <line number="276" hits="1" branch="False" />
+            <line number="277" hits="1" branch="False" />
+            <line number="278" hits="1" branch="False" />
+            <line number="279" hits="1" branch="False" />
+            <line number="280" hits="1" branch="False" />
+            <line number="281" hits="1" branch="False" />
+            <line number="282" hits="1" branch="False" />
+            <line number="283" hits="1" branch="False" />
+            <line number="284" hits="1" branch="False" />
+            <line number="285" hits="1" branch="False" />
+            <line number="286" hits="1" branch="False" />
+            <line number="287" hits="1" branch="False" />
+            <line number="288" hits="1" branch="False" />
+            <line number="289" hits="1" branch="False" />
+            <line number="290" hits="1" branch="False" />
+            <line number="291" hits="1" branch="False" />
+            <line number="292" hits="1" branch="False" />
+            <line number="293" hits="1" branch="False" />
+            <line number="294" hits="1" branch="False" />
+            <line number="295" hits="1" branch="False" />
+            <line number="296" hits="1" branch="False" />
+            <line number="297" hits="1" branch="False" />
+            <line number="298" hits="1" branch="False" />
+            <line number="299" hits="1" branch="False" />
+            <line number="300" hits="1" branch="False" />
+            <line number="301" hits="1" branch="False" />
+            <line number="302" hits="1" branch="False" />
+            <line number="303" hits="1" branch="False" />
+            <line number="304" hits="1" branch="False" />
+            <line number="305" hits="1" branch="False" />
+            <line number="306" hits="1" branch="False" />
+            <line number="307" hits="1" branch="False" />
+            <line number="308" hits="1" branch="False" />
+            <line number="309" hits="1" branch="False" />
+            <line number="310" hits="1" branch="False" />
+            <line number="312" hits="1" branch="False" />
+            <line number="313" hits="1" branch="False" />
+            <line number="316" hits="1" branch="False" />
+            <line number="319" hits="1" branch="False" />
+            <line number="320" hits="1" branch="False" />
+            <line number="321" hits="1" branch="False" />
           </lines>
         </class>
       </classes>

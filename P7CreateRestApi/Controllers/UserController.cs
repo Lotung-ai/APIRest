@@ -12,7 +12,7 @@ namespace P7CreateRestApi.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
-        private readonly UserManager<User> _userManager;  // Ajout du UserManager pour la gestion des utilisateurs
+        private readonly UserManager<User> _userManager; 
         private readonly RoleManager<IdentityRole<int>> _roleManager;
         public UserController(IUserRepository userRepository, UserManager<User> userManager, RoleManager<IdentityRole<int>> roleManager)
         {
