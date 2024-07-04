@@ -4,11 +4,11 @@ namespace P7CreateRestApi.Models
 {
     public class LoginModel
     {
-        // TODO: implement properties needeed for login model.
-        [Required]
+        [Required(ErrorMessage = "Username is required.")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Username must be between 3 and 50 characters.")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

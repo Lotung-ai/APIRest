@@ -4,6 +4,7 @@ using P7CreateRestApi.Models;
 using P7CreateRestApi.Domain;
 using System.Threading.Tasks;
 using P7CreateRestApi.Services;
+using Microsoft.Extensions.Logging;
 
 namespace P7CreateRestApi.Controllers
 {
@@ -12,22 +13,21 @@ namespace P7CreateRestApi.Controllers
     public class LoginController : ControllerBase
     {
         private readonly SignInManager<User> _signInManager;
-        private readonly TokenService _tokenService;
+        private readonly ITokenService _tokenService;
+        private readonly ILogger<LoginController> _logger;
 
-        public LoginController(SignInManager<User> signInManager, TokenService tokenService)
+        public LoginController(SignInManager<User> signInManager, ITokenService tokenService, ILogger<LoginController> logger)
         {
             _signInManager = signInManager;
             _tokenService = tokenService;
+            _logger = logger;
         }
 
         // POST api/login
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(new { Message = "Invalid login attempt.", Errors = ModelState });
-            }
+          
 
             // Attempt to sign in the user
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);
@@ -36,20 +36,12 @@ namespace P7CreateRestApi.Controllers
             {
                 var user = await _signInManager.UserManager.FindByNameAsync(model.UserName);
                 var token = await _tokenService.GenerateTokenAsync(user);
-                return Ok(new { Message = "Login successful.", Token=token });
-
+                _logger.LogInformation("User {UserName} logged in successfully.", model.UserName);
+                return Ok(new { Message = "Login successful.", Token = token });
             }
 
-            if (result.IsLockedOut)
-            {
-                return Unauthorized(new { Message = "User account is locked out." });
-            }
 
-            if (result.IsNotAllowed)
-            {
-                return Unauthorized(new { Message = "User is not allowed to log in." });
-            }
-
+            _logger.LogWarning("Invalid login attempt for user {UserName}.", model.UserName);
             return Unauthorized(new { Message = "Invalid login attempt." });
         }
 
@@ -58,6 +50,7 @@ namespace P7CreateRestApi.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            _logger.LogInformation("User logged out successfully.");
             return Ok(new { Message = "Logout successful." });
         }
     }

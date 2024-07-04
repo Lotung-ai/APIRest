@@ -96,62 +96,80 @@ namespace P7CreateRestApi.Controllers
                 return BadRequest("Invalid ID or request body.");
             }
 
-            var user = await _userManager.FindByIdAsync(id.ToString());
-            if (user == null)
+            try
             {
-                _logger.LogWarning("User not found for update: {UserId}", id);
-                return NotFound();
-            }
-
-            user.UserName = register.UserName;
-            user.Email = register.Email;
-            user.Fullname = register.Fullname;
-
-            // Gérer le changement de rôle
-            if (user.Role != register.Role)
-            {
-                await _userManager.RemoveFromRoleAsync(user, user.Role);
-                if (!await _roleManager.RoleExistsAsync(register.Role))
+                var user = await _userManager.FindByIdAsync(id.ToString());
+                if (user == null)
                 {
-                    await _roleManager.CreateAsync(new IdentityRole<int> { Name = register.Role });
+                    _logger.LogWarning("User not found for update: {UserId}", id);
+                    return NotFound();
                 }
-                await _userManager.AddToRoleAsync(user, register.Role);
-                user.Role = register.Role;
-            }
 
-            var result = await _userManager.UpdateAsync(user);
-            if (result.Succeeded)
+                user.UserName = register.UserName;
+                user.Email = register.Email;
+                user.Fullname = register.Fullname;
+
+                // Gérer le changement de rôle
+                if (user.Role != register.Role)
+                {
+                    await _userManager.RemoveFromRoleAsync(user, user.Role);
+                    if (!await _roleManager.RoleExistsAsync(register.Role))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole<int> { Name = register.Role });
+                    }
+                    await _userManager.AddToRoleAsync(user, register.Role);
+                    user.Role = register.Role;
+                }
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User updated successfully: {UserId}", id);
+                    return Ok(user);
+                }
+
+                var errors = result.Errors.Select(e => e.Description);
+                _logger.LogWarning("User update failed: {UserId}, Errors: {Errors}", id, string.Join(", ", errors));
+                return BadRequest(new { Errors = errors });
+            }
+            catch (Exception ex)
             {
-                _logger.LogInformation("User updated successfully: {UserId}", id);
-                return Ok(user);
+                _logger.LogError(ex, "An error occurred while updating the user: {UserId}", id);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
             }
-
-            var errors = result.Errors.Select(e => e.Description);
-            _logger.LogWarning("User update failed: {UserId}, Errors: {Errors}", id, string.Join(", ", errors));
-            return BadRequest(new { Errors = errors });
         }
+
 
 
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var existingUser = await _userRepository.GetUserByIdAsync(id);
-            if (existingUser == null)
+            try
             {
-                _logger.LogWarning("User not found for deletion: {UserId}", id);
-                return NotFound();
-            }
+                var existingUser = await _userRepository.GetUserByIdAsync(id);
+                if (existingUser == null)
+                {
+                    _logger.LogWarning("User not found for deletion: {UserId}", id);
+                    return NotFound();
+                }
 
-            var result = await _userRepository.DeleteUserAsync(id);
-            if (!result)
+                var result = await _userRepository.DeleteUserAsync(id);
+                if (!result)
+                {
+                    _logger.LogError("Failed to delete user: {UserId}", id);
+                    return BadRequest("Failed to delete user.");
+                }
+
+                _logger.LogInformation("User deleted successfully: {UserId}", id);
+                return NoContent();
+            }
+            catch (Exception ex)
             {
-                _logger.LogError("Failed to delete user: {UserId}", id);
-                return BadRequest("Failed to delete user.");
+                _logger.LogError(ex, "An error occurred while deleting the user: {UserId}", id);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
             }
-
-            _logger.LogInformation("User deleted successfully: {UserId}", id);
-            return NoContent();
         }
+
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace P7CreateRestApi.Services
 {
-    public class TokenService
+    public class TokenService : ITokenService
     {
         private readonly UserManager<User> _userManager;
         private readonly IConfiguration _configuration;

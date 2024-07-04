@@ -9,6 +9,8 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using P7CreateRestApi.Repositories;
 using Microsoft.AspNetCore.Http;
+using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace P7CreateRestApi.Tests
 {
@@ -285,6 +287,193 @@ namespace P7CreateRestApi.Tests
             Assert.Equal(200, okResult.StatusCode);
             // Vérifie que la valeur de la réponse est une liste vide.
             Assert.Empty(okResult.Value as List<User>);
+        }
+
+
+        // Test pour UpdateUser - La mise à jour réussit
+        [Fact]
+        public async Task UpdateUser_ShouldReturnOk_WhenUpdateIsSuccessful()
+        {
+            // Arrange
+            // Crée un utilisateur original avec des données spécifiques.
+            var originalUser = new User
+            {
+                Id = 1,
+                UserName = "OldAccount",
+                Email = "old.email@example.com",
+                Fullname = "OldFullname",
+                Role = "OldRole"
+            };
+
+            // Crée un modèle de mise à jour avec de nouvelles données.
+            var updatedUser = new RegisterModel
+            {
+                UserName = "NewAccount",
+                Email = "new.email@example.com",
+                Password = "NewPassword",
+                Fullname = "NewFullname",
+                Role = "NewRole"
+            };
+
+            // Configure les mocks pour renvoyer l'utilisateur original et simuler une mise à jour réussie.
+            _mockUserManager.Setup(um => um.FindByIdAsync("1")).ReturnsAsync(originalUser);
+            _mockUserManager.Setup(um => um.UpdateAsync(It.IsAny<User>())).ReturnsAsync(IdentityResult.Success);
+            _mockRoleManager.Setup(rm => rm.RoleExistsAsync(updatedUser.Role)).ReturnsAsync(true);
+
+            // Act
+            // Appelle la méthode UpdateUser du contrôleur pour effectuer la mise à jour.
+            var result = await _controller.UpdateUser(1, updatedUser);
+
+            // Assert
+            // Vérifie que le résultat est un OkObjectResult, ce qui signifie que la mise à jour a réussi.
+            var okResult = Assert.IsType<OkObjectResult>(result);
+
+            // Vérifie que la réponse contient un utilisateur mis à jour avec les nouvelles données.
+            var user = Assert.IsType<User>(okResult.Value);
+            Assert.Equal("NewAccount", user.UserName);
+            Assert.Equal("new.email@example.com", user.Email);
+            Assert.Equal("NewFullname", user.Fullname);
+            Assert.Equal("NewRole", user.Role);
+
+            // Vérifie que le logger a été appelé au moins une fois pour l'événement de mise à jour réussie.
+            _mockLogger.Verify(logger => logger.LogInformation(It.IsAny<string>(), It.IsAny<object[]>()), Times.AtLeastOnce);
+        }
+
+
+
+        // Test pour UpdateUser - L'élément à mettre à jour n'existe pas
+        [Fact]
+        public async Task UpdateUser_ShouldReturnNotFound_WhenUserDoesNotExist()
+        {
+            // Arrange
+            // Crée un modèle de mise à jour avec de nouvelles données.
+            var user = new RegisterModel
+            {
+                UserName = "NewAccount",
+                Email = "new.email@example.com",
+                Password = "NewPassword",
+                Fullname = "NewFullname",
+                Role = "NewRole"
+            };
+
+            // Configure le mock pour renvoyer null pour la recherche d'utilisateur, simulant un utilisateur non trouvé.
+            _mockUserManager.Setup(um => um.FindByIdAsync("1")).ReturnsAsync((User)null);
+
+            // Act
+            // Appelle la méthode UpdateUser du contrôleur pour essayer de mettre à jour un utilisateur qui n'existe pas.
+            var result = await _controller.UpdateUser(1, user);
+
+            // Assert
+            // Vérifie que le résultat est un NotFoundResult, ce qui signifie que l'utilisateur n'a pas été trouvé.
+            var notFoundResult = Assert.IsType<NotFoundResult>(result);
+            Assert.Equal(404, notFoundResult.StatusCode);
+        }
+
+
+        // Test pour UpdateUser - Une exception est levée
+        [Fact]
+        public async Task UpdateUser_ShouldReturnInternalServerError_WhenExceptionIsThrown()
+        {
+            // Arrange
+            // Crée un modèle de mise à jour avec de nouvelles données.
+            var registerModel = new RegisterModel
+            {
+                UserName = "NewAccount",
+                Email = "new.email@example.com",
+                Password = "NewPassword",
+                Fullname = "NewFullname",
+                Role = "NewRole"
+            };
+
+            // Configure le mock pour lancer une exception lors de la recherche d'un utilisateur, simulant une erreur de base de données.
+            _mockUserManager.Setup(um => um.FindByIdAsync("1")).ThrowsAsync(new Exception("Database error"));
+
+            // Act
+            // Appelle la méthode UpdateUser du contrôleur pour tester le comportement en cas d'exception.
+            var result = await _controller.UpdateUser(1, registerModel);
+
+            // Assert
+            // Vérifie que le résultat est un ObjectResult, ce qui signifie que le serveur a rencontré une erreur interne.
+            var actionResult = Assert.IsType<ObjectResult>(result);
+
+            // Vérifie que le code de statut HTTP est 500 (Internal Server Error), indiquant une erreur interne.
+            Assert.Equal(StatusCodes.Status500InternalServerError, actionResult.StatusCode);
+
+            // Vérifie que le message d'erreur est "Internal server error".
+            Assert.Equal("Internal server error", actionResult.Value);
+        }
+
+
+        // Test pour DeleteUser - Suppression réussie
+        [Fact]
+        public async Task DeleteUser_ShouldReturnNoContent_WhenDeleteIsSuccessful()
+        {
+            // Arrange
+            int userId = 1;
+            var user = new User { Id = userId };
+
+            // Configure le mock pour retourner un utilisateur existant et simuler une suppression réussie.
+            _mockUserRepository.Setup(r => r.GetUserByIdAsync(userId))
+                .ReturnsAsync(user);  // Simule la présence de l'utilisateur
+            _mockUserRepository.Setup(r => r.DeleteUserAsync(userId))
+                .ReturnsAsync(true);  // Simule une suppression réussie
+
+            // Act
+            // Appelle la méthode DeleteUser du contrôleur pour effectuer la suppression.
+            var result = await _controller.DeleteUser(userId);
+
+            // Assert
+            // Vérifie que le résultat est un NoContentResult, ce qui signifie que la suppression a été effectuée avec succès.
+            Assert.IsType<NoContentResult>(result);
+        }
+
+        // Test pour DeleteUser - User non trouvé
+        [Fact]
+        public async Task DeleteUser_ShouldReturnNotFound_WhenUserDoesNotExist()
+        {
+            // Arrange
+            int userId = 1;
+
+            // Configure le mock pour simuler que l'utilisateur n'existe pas, donc la suppression échoue.
+            _mockUserRepository.Setup(r => r.GetUserByIdAsync(userId)).ReturnsAsync((User)null);
+
+            // Act
+            // Appelle la méthode DeleteUser du contrôleur pour essayer de supprimer un utilisateur qui n'existe pas.
+            var result = await _controller.DeleteUser(userId);
+
+            // Assert
+            // Vérifie que le résultat est un NotFoundResult, ce qui signifie que l'utilisateur n'a pas été trouvé.
+            Assert.IsType<NotFoundResult>(result);
+            Assert.Equal(404, (result as NotFoundResult).StatusCode);
+        }
+
+        // Test pour DeleteUser - Exception levée
+        [Fact]
+        public async Task DeleteUser_ShouldReturnInternalServerError_WhenExceptionIsThrown()
+        {
+            // Arrange
+            int userId = 1;
+            var expectedMessage = "Internal server error";
+
+            // Configure le mock pour lancer une exception lors de la suppression, simulant une erreur de base de données.
+            _mockUserRepository.Setup(r => r.GetUserByIdAsync(userId))
+                .ReturnsAsync(new User { Id = userId });  // Simule un utilisateur existant
+            _mockUserRepository.Setup(r => r.DeleteUserAsync(userId))
+                .ThrowsAsync(new Exception("Delete failed"));
+
+            // Act
+            // Appelle la méthode DeleteUser du contrôleur pour tester le comportement en cas d'exception.
+            var result = await _controller.DeleteUser(userId);
+
+            // Assert
+            // Vérifie que le résultat est un ObjectResult, ce qui signifie que le serveur a rencontré une erreur interne.
+            var actionResult = Assert.IsType<ObjectResult>(result);
+
+            // Vérifie que le code de statut HTTP est 500 (Internal Server Error), indiquant une erreur interne.
+            Assert.Equal((int)HttpStatusCode.InternalServerError, actionResult.StatusCode);
+
+            // Vérifie que le message d'erreur est "Internal server error".
+            Assert.Equal(expectedMessage, actionResult.Value);
         }
     }
 }
