@@ -26,6 +26,8 @@ namespace Dot.Net.WebApi.Data
            .HasKey(cp => cp.Id);
             builder.Entity<RuleName>()
           .HasKey(cp => cp.Id);
+            builder.Entity<Trade>()
+          .HasKey(cp => cp.TradeId);
         }
     }
 }

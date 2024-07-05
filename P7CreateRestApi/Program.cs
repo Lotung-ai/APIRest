@@ -9,7 +9,7 @@ builder.Services.AddScoped<IBidRepository, BidRepository>();
 builder.Services.AddScoped<ICurvePointRepository, CurvePointRepository>();
 builder.Services.AddScoped<IRatingRepository, RatingRepository>();
 builder.Services.AddScoped<IRuleRepository, RuleRepository>();
-
+builder.Services.AddScoped<ITradeRepository, TradeRepository>();
 // Add services to the container.
 
 builder.Services.AddControllers();
