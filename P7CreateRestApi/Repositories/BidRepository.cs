@@ -1,8 +1,9 @@
-﻿using Dot.Net.WebApi.Domain;
+﻿using P7CreateRestApi.Data;
+using P7CreateRestApi.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 
-namespace Dot.Net.WebApi.Data
+namespace P7CreateRestApi.Repositories
 {
     public class BidRepository : IBidRepository
     {

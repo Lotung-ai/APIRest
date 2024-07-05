@@ -1,36 +1,55 @@
-using Dot.Net.WebApi.Data;
-using Dot.Net.WebApi.Domain;
+using P7CreateRestApi.Data;
+using P7CreateRestApi.Domain;
 using Microsoft.EntityFrameworkCore;
+using System;
+using P7CreateRestApi.Repositories;
 
-namespace Dot.Net.WebApi.Repositories
+namespace P7CreateRestApi.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
-        public LocalDbContext DbContext { get; }
+        private readonly LocalDbContext _context;
 
-        public UserRepository(LocalDbContext dbContext)
+        public UserRepository(LocalDbContext context)
         {
-            DbContext = dbContext;
+            _context = context;
         }
 
-        public User FindByUserName(string userName)
+        public async Task<User> CreateUserAsync(User user)
         {
-            return DbContext.Users.Where(user => user.UserName == userName)
-                                  .FirstOrDefault();
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            return user;
         }
 
-        public async Task<List<User>> FindAll()
+        public async Task<User> GetUserByIdAsync(int id)
         {
-            return await DbContext.Users.ToListAsync();
+            return await _context.Users.FindAsync(id);
         }
 
-        public void Add(User user)
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
+            return await _context.Users.ToListAsync();
         }
 
-        public User FindById(int id)
+        public async Task<User> UpdateUserAsync(User user)
         {
-            return null;
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            return user;
+        }
+
+        public async Task<bool> DeleteUserAsync(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return false;
+            }
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

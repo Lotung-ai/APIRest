@@ -1,6 +1,7 @@
-using Dot.Net.WebApi.Data;
+using P7CreateRestApi.Data;
 using Microsoft.EntityFrameworkCore;
 using P7CreateRestApi.Data;
+using P7CreateRestApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -10,6 +11,7 @@ builder.Services.AddScoped<ICurvePointRepository, CurvePointRepository>();
 builder.Services.AddScoped<IRatingRepository, RatingRepository>();
 builder.Services.AddScoped<IRuleRepository, RuleRepository>();
 builder.Services.AddScoped<ITradeRepository, TradeRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 // Add services to the container.
 
 builder.Services.AddControllers();
