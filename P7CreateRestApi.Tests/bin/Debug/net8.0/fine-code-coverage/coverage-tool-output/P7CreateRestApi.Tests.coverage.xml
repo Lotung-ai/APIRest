@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<coverage line-rate="0.8341" branch-rate="0.7567" version="1.9" timestamp="1720169388" lines-covered="1876" lines-valid="2249" branches-covered="112" branches-valid="148">
+<coverage line-rate="0.8341" branch-rate="0.7567" version="1.9" timestamp="1720185972" lines-covered="1876" lines-valid="2249" branches-covered="112" branches-valid="148">
   <sources>
     <source>C:\Users\brandon.ku\</source>
   </sources>
@@ -6638,88 +6638,88 @@
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="451" hits="1" branch="False" />
+                <line number="447" hits="1" branch="False" />
+                <line number="449" hits="1" branch="False" />
+                <line number="450" hits="1" branch="False" />
                 <line number="453" hits="1" branch="False" />
                 <line number="454" hits="1" branch="False" />
-                <line number="457" hits="1" branch="False" />
-                <line number="458" hits="1" branch="False" />
-                <line number="459" hits="1" branch="False" />
+                <line number="455" hits="1" branch="False" />
+                <line number="456" hits="1" branch="False" />
                 <line number="460" hits="1" branch="False" />
                 <line number="464" hits="1" branch="False" />
-                <line number="468" hits="1" branch="False" />
+                <line number="467" hits="1" branch="False" />
+                <line number="470" hits="1" branch="False" />
                 <line number="471" hits="1" branch="False" />
-                <line number="474" hits="1" branch="False" />
-                <line number="475" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="451" hits="1" branch="False" />
+            <line number="447" hits="1" branch="False" />
+            <line number="449" hits="1" branch="False" />
+            <line number="450" hits="1" branch="False" />
             <line number="453" hits="1" branch="False" />
             <line number="454" hits="1" branch="False" />
-            <line number="457" hits="1" branch="False" />
-            <line number="458" hits="1" branch="False" />
-            <line number="459" hits="1" branch="False" />
+            <line number="455" hits="1" branch="False" />
+            <line number="456" hits="1" branch="False" />
             <line number="460" hits="1" branch="False" />
             <line number="464" hits="1" branch="False" />
-            <line number="468" hits="1" branch="False" />
+            <line number="467" hits="1" branch="False" />
+            <line number="470" hits="1" branch="False" />
             <line number="471" hits="1" branch="False" />
-            <line number="474" hits="1" branch="False" />
-            <line number="475" hits="1" branch="False" />
           </lines>
         </class>
         <class name="P7CreateRestApi.Tests.UserControllerTests/&lt;DeleteUser_ShouldReturnNoContent_WhenDeleteIsSuccessful&gt;d__19" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\UserControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="408" hits="1" branch="False" />
+                <line number="404" hits="1" branch="False" />
+                <line number="406" hits="1" branch="False" />
+                <line number="407" hits="1" branch="False" />
                 <line number="410" hits="1" branch="False" />
                 <line number="411" hits="1" branch="False" />
-                <line number="414" hits="1" branch="False" />
-                <line number="415" hits="1" branch="False" />
-                <line number="416" hits="1" branch="False" />
+                <line number="412" hits="1" branch="False" />
+                <line number="413" hits="1" branch="False" />
                 <line number="417" hits="1" branch="False" />
                 <line number="421" hits="1" branch="False" />
-                <line number="425" hits="1" branch="False" />
-                <line number="426" hits="1" branch="False" />
+                <line number="422" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="408" hits="1" branch="False" />
+            <line number="404" hits="1" branch="False" />
+            <line number="406" hits="1" branch="False" />
+            <line number="407" hits="1" branch="False" />
             <line number="410" hits="1" branch="False" />
             <line number="411" hits="1" branch="False" />
-            <line number="414" hits="1" branch="False" />
-            <line number="415" hits="1" branch="False" />
-            <line number="416" hits="1" branch="False" />
+            <line number="412" hits="1" branch="False" />
+            <line number="413" hits="1" branch="False" />
             <line number="417" hits="1" branch="False" />
             <line number="421" hits="1" branch="False" />
-            <line number="425" hits="1" branch="False" />
-            <line number="426" hits="1" branch="False" />
+            <line number="422" hits="1" branch="False" />
           </lines>
         </class>
         <class name="P7CreateRestApi.Tests.UserControllerTests/&lt;DeleteUser_ShouldReturnNotFound_WhenUserDoesNotExist&gt;d__20" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\UserControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="431" hits="1" branch="False" />
-                <line number="433" hits="1" branch="False" />
+                <line number="427" hits="1" branch="False" />
+                <line number="429" hits="1" branch="False" />
+                <line number="432" hits="1" branch="False" />
                 <line number="436" hits="1" branch="False" />
                 <line number="440" hits="1" branch="False" />
-                <line number="444" hits="1" branch="False" />
-                <line number="445" hits="1" branch="False" />
-                <line number="446" hits="1" branch="False" />
+                <line number="441" hits="1" branch="False" />
+                <line number="442" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="431" hits="1" branch="False" />
-            <line number="433" hits="1" branch="False" />
+            <line number="427" hits="1" branch="False" />
+            <line number="429" hits="1" branch="False" />
+            <line number="432" hits="1" branch="False" />
             <line number="436" hits="1" branch="False" />
             <line number="440" hits="1" branch="False" />
-            <line number="444" hits="1" branch="False" />
-            <line number="445" hits="1" branch="False" />
-            <line number="446" hits="1" branch="False" />
+            <line number="441" hits="1" branch="False" />
+            <line number="442" hits="1" branch="False" />
           </lines>
         </class>
         <class name="P7CreateRestApi.Tests.UserControllerTests/&lt;GetAllUsers_ReturnsOk_WithEmptyList_WhenNoUsersExist&gt;d__15" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\UserControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
@@ -7098,78 +7098,78 @@
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
+                <line number="371" hits="1" branch="False" />
                 <line number="374" hits="1" branch="False" />
+                <line number="375" hits="1" branch="False" />
+                <line number="376" hits="1" branch="False" />
                 <line number="377" hits="1" branch="False" />
                 <line number="378" hits="1" branch="False" />
                 <line number="379" hits="1" branch="False" />
                 <line number="380" hits="1" branch="False" />
                 <line number="381" hits="1" branch="False" />
-                <line number="382" hits="1" branch="False" />
-                <line number="383" hits="1" branch="False" />
                 <line number="384" hits="1" branch="False" />
-                <line number="387" hits="1" branch="False" />
-                <line number="391" hits="1" branch="False" />
+                <line number="388" hits="1" branch="False" />
+                <line number="392" hits="1" branch="False" />
                 <line number="395" hits="1" branch="False" />
                 <line number="398" hits="1" branch="False" />
-                <line number="401" hits="1" branch="False" />
-                <line number="402" hits="1" branch="False" />
+                <line number="399" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
+            <line number="371" hits="1" branch="False" />
             <line number="374" hits="1" branch="False" />
+            <line number="375" hits="1" branch="False" />
+            <line number="376" hits="1" branch="False" />
             <line number="377" hits="1" branch="False" />
             <line number="378" hits="1" branch="False" />
             <line number="379" hits="1" branch="False" />
             <line number="380" hits="1" branch="False" />
             <line number="381" hits="1" branch="False" />
-            <line number="382" hits="1" branch="False" />
-            <line number="383" hits="1" branch="False" />
             <line number="384" hits="1" branch="False" />
-            <line number="387" hits="1" branch="False" />
-            <line number="391" hits="1" branch="False" />
+            <line number="388" hits="1" branch="False" />
+            <line number="392" hits="1" branch="False" />
             <line number="395" hits="1" branch="False" />
             <line number="398" hits="1" branch="False" />
-            <line number="401" hits="1" branch="False" />
-            <line number="402" hits="1" branch="False" />
+            <line number="399" hits="1" branch="False" />
           </lines>
         </class>
         <class name="P7CreateRestApi.Tests.UserControllerTests/&lt;UpdateUser_ShouldReturnNotFound_WhenUserDoesNotExist&gt;d__17" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\UserControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">
           <methods>
             <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="345" hits="1" branch="False" />
+                <line number="343" hits="1" branch="False" />
+                <line number="346" hits="1" branch="False" />
+                <line number="347" hits="1" branch="False" />
                 <line number="348" hits="1" branch="False" />
                 <line number="349" hits="1" branch="False" />
                 <line number="350" hits="1" branch="False" />
                 <line number="351" hits="1" branch="False" />
                 <line number="352" hits="1" branch="False" />
                 <line number="353" hits="1" branch="False" />
-                <line number="354" hits="1" branch="False" />
-                <line number="355" hits="1" branch="False" />
-                <line number="358" hits="1" branch="False" />
-                <line number="362" hits="1" branch="False" />
+                <line number="356" hits="1" branch="False" />
+                <line number="360" hits="1" branch="False" />
+                <line number="364" hits="1" branch="False" />
+                <line number="365" hits="1" branch="False" />
                 <line number="366" hits="1" branch="False" />
-                <line number="367" hits="1" branch="False" />
-                <line number="368" hits="1" branch="False" />
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="345" hits="1" branch="False" />
+            <line number="343" hits="1" branch="False" />
+            <line number="346" hits="1" branch="False" />
+            <line number="347" hits="1" branch="False" />
             <line number="348" hits="1" branch="False" />
             <line number="349" hits="1" branch="False" />
             <line number="350" hits="1" branch="False" />
             <line number="351" hits="1" branch="False" />
             <line number="352" hits="1" branch="False" />
             <line number="353" hits="1" branch="False" />
-            <line number="354" hits="1" branch="False" />
-            <line number="355" hits="1" branch="False" />
-            <line number="358" hits="1" branch="False" />
-            <line number="362" hits="1" branch="False" />
+            <line number="356" hits="1" branch="False" />
+            <line number="360" hits="1" branch="False" />
+            <line number="364" hits="1" branch="False" />
+            <line number="365" hits="1" branch="False" />
             <line number="366" hits="1" branch="False" />
-            <line number="367" hits="1" branch="False" />
-            <line number="368" hits="1" branch="False" />
           </lines>
         </class>
         <class name="P7CreateRestApi.Tests.UserControllerTests/&lt;UpdateUser_ShouldReturnOk_WhenUpdateIsSuccessful&gt;d__16" filename="source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\UserControllerTest.cs" line-rate="1" branch-rate="1" complexity="1">

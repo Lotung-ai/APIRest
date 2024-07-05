@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.834148510449088" branch-rate="0.756756756756757" lines-covered="1876" lines-valid="2249" branches-covered="112" branches-valid="148" complexity="369" version="0" timestamp="1720176589">
+<coverage line-rate="0.834148510449088" branch-rate="0.756756756756757" lines-covered="1876" lines-valid="2249" branches-covered="112" branches-valid="148" complexity="369" version="0" timestamp="1720193172">
   <sources>
     <source>C:\Users\brandon.ku\</source>
   </sources>
@@ -5218,43 +5218,43 @@
             </method>
             <method name="DeleteUser_ShouldReturnInternalServerError_WhenExceptionIsThrown" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="451" hits="1" branch="false" />
+                <line number="447" hits="1" branch="false" />
+                <line number="449" hits="1" branch="false" />
+                <line number="450" hits="1" branch="false" />
                 <line number="453" hits="1" branch="false" />
                 <line number="454" hits="1" branch="false" />
-                <line number="457" hits="1" branch="false" />
-                <line number="458" hits="1" branch="false" />
-                <line number="459" hits="1" branch="false" />
+                <line number="455" hits="1" branch="false" />
+                <line number="456" hits="1" branch="false" />
                 <line number="460" hits="1" branch="false" />
                 <line number="464" hits="1" branch="false" />
-                <line number="468" hits="1" branch="false" />
+                <line number="467" hits="1" branch="false" />
+                <line number="470" hits="1" branch="false" />
                 <line number="471" hits="1" branch="false" />
-                <line number="474" hits="1" branch="false" />
-                <line number="475" hits="1" branch="false" />
               </lines>
             </method>
             <method name="DeleteUser_ShouldReturnNoContent_WhenDeleteIsSuccessful" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="408" hits="1" branch="false" />
+                <line number="404" hits="1" branch="false" />
+                <line number="406" hits="1" branch="false" />
+                <line number="407" hits="1" branch="false" />
                 <line number="410" hits="1" branch="false" />
                 <line number="411" hits="1" branch="false" />
-                <line number="414" hits="1" branch="false" />
-                <line number="415" hits="1" branch="false" />
-                <line number="416" hits="1" branch="false" />
+                <line number="412" hits="1" branch="false" />
+                <line number="413" hits="1" branch="false" />
                 <line number="417" hits="1" branch="false" />
                 <line number="421" hits="1" branch="false" />
-                <line number="425" hits="1" branch="false" />
-                <line number="426" hits="1" branch="false" />
+                <line number="422" hits="1" branch="false" />
               </lines>
             </method>
             <method name="DeleteUser_ShouldReturnNotFound_WhenUserDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="431" hits="1" branch="false" />
-                <line number="433" hits="1" branch="false" />
+                <line number="427" hits="1" branch="false" />
+                <line number="429" hits="1" branch="false" />
+                <line number="432" hits="1" branch="false" />
                 <line number="436" hits="1" branch="false" />
                 <line number="440" hits="1" branch="false" />
-                <line number="444" hits="1" branch="false" />
-                <line number="445" hits="1" branch="false" />
-                <line number="446" hits="1" branch="false" />
+                <line number="441" hits="1" branch="false" />
+                <line number="442" hits="1" branch="false" />
               </lines>
             </method>
             <method name="GetAllUsers_ReturnsOk_WithEmptyList_WhenNoUsersExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
@@ -5427,39 +5427,39 @@
             </method>
             <method name="UpdateUser_ShouldReturnInternalServerError_WhenExceptionIsThrown" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
+                <line number="371" hits="1" branch="false" />
                 <line number="374" hits="1" branch="false" />
+                <line number="375" hits="1" branch="false" />
+                <line number="376" hits="1" branch="false" />
                 <line number="377" hits="1" branch="false" />
                 <line number="378" hits="1" branch="false" />
                 <line number="379" hits="1" branch="false" />
                 <line number="380" hits="1" branch="false" />
                 <line number="381" hits="1" branch="false" />
-                <line number="382" hits="1" branch="false" />
-                <line number="383" hits="1" branch="false" />
                 <line number="384" hits="1" branch="false" />
-                <line number="387" hits="1" branch="false" />
-                <line number="391" hits="1" branch="false" />
+                <line number="388" hits="1" branch="false" />
+                <line number="392" hits="1" branch="false" />
                 <line number="395" hits="1" branch="false" />
                 <line number="398" hits="1" branch="false" />
-                <line number="401" hits="1" branch="false" />
-                <line number="402" hits="1" branch="false" />
+                <line number="399" hits="1" branch="false" />
               </lines>
             </method>
             <method name="UpdateUser_ShouldReturnNotFound_WhenUserDoesNotExist" signature="()" line-rate="1" branch-rate="1" complexity="1">
               <lines>
-                <line number="345" hits="1" branch="false" />
+                <line number="343" hits="1" branch="false" />
+                <line number="346" hits="1" branch="false" />
+                <line number="347" hits="1" branch="false" />
                 <line number="348" hits="1" branch="false" />
                 <line number="349" hits="1" branch="false" />
                 <line number="350" hits="1" branch="false" />
                 <line number="351" hits="1" branch="false" />
                 <line number="352" hits="1" branch="false" />
                 <line number="353" hits="1" branch="false" />
-                <line number="354" hits="1" branch="false" />
-                <line number="355" hits="1" branch="false" />
-                <line number="358" hits="1" branch="false" />
-                <line number="362" hits="1" branch="false" />
+                <line number="356" hits="1" branch="false" />
+                <line number="360" hits="1" branch="false" />
+                <line number="364" hits="1" branch="false" />
+                <line number="365" hits="1" branch="false" />
                 <line number="366" hits="1" branch="false" />
-                <line number="367" hits="1" branch="false" />
-                <line number="368" hits="1" branch="false" />
               </lines>
             </method>
             <method name="UpdateUser_ShouldReturnOk_WhenUpdateIsSuccessful" signature="()" line-rate="1" branch-rate="1" complexity="1">
@@ -5681,64 +5681,64 @@
             <line number="335" hits="1" branch="false" />
             <line number="336" hits="1" branch="false" />
             <line number="338" hits="1" branch="false" />
-            <line number="345" hits="1" branch="false" />
+            <line number="343" hits="1" branch="false" />
+            <line number="346" hits="1" branch="false" />
+            <line number="347" hits="1" branch="false" />
             <line number="348" hits="1" branch="false" />
             <line number="349" hits="1" branch="false" />
             <line number="350" hits="1" branch="false" />
             <line number="351" hits="1" branch="false" />
             <line number="352" hits="1" branch="false" />
             <line number="353" hits="1" branch="false" />
-            <line number="354" hits="1" branch="false" />
-            <line number="355" hits="1" branch="false" />
-            <line number="358" hits="1" branch="false" />
-            <line number="362" hits="1" branch="false" />
+            <line number="356" hits="1" branch="false" />
+            <line number="360" hits="1" branch="false" />
+            <line number="364" hits="1" branch="false" />
+            <line number="365" hits="1" branch="false" />
             <line number="366" hits="1" branch="false" />
-            <line number="367" hits="1" branch="false" />
-            <line number="368" hits="1" branch="false" />
+            <line number="371" hits="1" branch="false" />
             <line number="374" hits="1" branch="false" />
+            <line number="375" hits="1" branch="false" />
+            <line number="376" hits="1" branch="false" />
             <line number="377" hits="1" branch="false" />
             <line number="378" hits="1" branch="false" />
             <line number="379" hits="1" branch="false" />
             <line number="380" hits="1" branch="false" />
             <line number="381" hits="1" branch="false" />
-            <line number="382" hits="1" branch="false" />
-            <line number="383" hits="1" branch="false" />
             <line number="384" hits="1" branch="false" />
-            <line number="387" hits="1" branch="false" />
-            <line number="391" hits="1" branch="false" />
+            <line number="388" hits="1" branch="false" />
+            <line number="392" hits="1" branch="false" />
             <line number="395" hits="1" branch="false" />
             <line number="398" hits="1" branch="false" />
-            <line number="401" hits="1" branch="false" />
-            <line number="402" hits="1" branch="false" />
-            <line number="408" hits="1" branch="false" />
+            <line number="399" hits="1" branch="false" />
+            <line number="404" hits="1" branch="false" />
+            <line number="406" hits="1" branch="false" />
+            <line number="407" hits="1" branch="false" />
             <line number="410" hits="1" branch="false" />
             <line number="411" hits="1" branch="false" />
-            <line number="414" hits="1" branch="false" />
-            <line number="415" hits="1" branch="false" />
-            <line number="416" hits="1" branch="false" />
+            <line number="412" hits="1" branch="false" />
+            <line number="413" hits="1" branch="false" />
             <line number="417" hits="1" branch="false" />
             <line number="421" hits="1" branch="false" />
-            <line number="425" hits="1" branch="false" />
-            <line number="426" hits="1" branch="false" />
-            <line number="431" hits="1" branch="false" />
-            <line number="433" hits="1" branch="false" />
+            <line number="422" hits="1" branch="false" />
+            <line number="427" hits="1" branch="false" />
+            <line number="429" hits="1" branch="false" />
+            <line number="432" hits="1" branch="false" />
             <line number="436" hits="1" branch="false" />
             <line number="440" hits="1" branch="false" />
-            <line number="444" hits="1" branch="false" />
-            <line number="445" hits="1" branch="false" />
-            <line number="446" hits="1" branch="false" />
-            <line number="451" hits="1" branch="false" />
+            <line number="441" hits="1" branch="false" />
+            <line number="442" hits="1" branch="false" />
+            <line number="447" hits="1" branch="false" />
+            <line number="449" hits="1" branch="false" />
+            <line number="450" hits="1" branch="false" />
             <line number="453" hits="1" branch="false" />
             <line number="454" hits="1" branch="false" />
-            <line number="457" hits="1" branch="false" />
-            <line number="458" hits="1" branch="false" />
-            <line number="459" hits="1" branch="false" />
+            <line number="455" hits="1" branch="false" />
+            <line number="456" hits="1" branch="false" />
             <line number="460" hits="1" branch="false" />
             <line number="464" hits="1" branch="false" />
-            <line number="468" hits="1" branch="false" />
+            <line number="467" hits="1" branch="false" />
+            <line number="470" hits="1" branch="false" />
             <line number="471" hits="1" branch="false" />
-            <line number="474" hits="1" branch="false" />
-            <line number="475" hits="1" branch="false" />
           </lines>
         </class>
       </classes>
