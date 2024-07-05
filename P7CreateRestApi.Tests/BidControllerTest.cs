@@ -80,15 +80,71 @@ namespace P7CreateRestApi.Tests
         public async Task UpdateBid_ShouldReturnNoContent_WhenBidIsValid()
         {
             // Arrange
-            var bid = new BidList { BidListId = 1, Account = "Account1", BidType = "Type1" };
-            _bidRepositoryMock.Setup(r => r.GetBidByIdAsync(bid.BidListId)).ReturnsAsync(bid);
-            _bidRepositoryMock.Setup(r => r.UpdateBidAsync(bid));
+            var originalBid = new BidList
+            {
+                BidListId = 1,
+                Account = "string",
+                BidType = "Type1",
+                BidQuantity = 0,
+                AskQuantity = 0,
+                Bid = 0,
+                Ask = 0,
+                Benchmark = "string",
+                BidListDate = DateTime.Now,
+                Commentary = "string",
+                BidSecurity = "string",
+                BidStatus = "string",
+                Trader = "string",
+                Book = "string",
+                CreationName = "string",
+                CreationDate = DateTime.Now,
+                RevisionName = "string",
+                RevisionDate = DateTime.Now,
+                DealName = "string",
+                DealType = "string",
+                SourceListId = "string",
+                Side = "string"
+            };
+            var updatedBid = new BidList
+            {
+                BidListId = 1,
+                Account = "string2",
+                BidType = "Type2",
+                BidQuantity = 20,
+                AskQuantity = 20,
+                Bid = 20,
+                Ask = 20,
+                Benchmark = "string2",
+                BidListDate = DateTime.Now,
+                Commentary = "string2",
+                BidSecurity = "string2",
+                BidStatus = "string2",
+                Trader = "string2",
+                Book = "string2",
+                CreationName = "string2",
+                CreationDate = DateTime.Now,
+                RevisionName = "string2",
+                RevisionDate = DateTime.Now,
+                DealName = "string2",
+                DealType = "string2",
+                SourceListId = "string2",
+                Side = "string2"
+            };
 
-            // Act
-            var result = await _controller.UpdateBid(bid.BidListId, bid);
+            // Simule que l'entité existe
+            _bidRepositoryMock.Setup(r => r.GetBidByIdAsync(1)).ReturnsAsync(originalBid);
+            // Simule la mise à jour réussie
+            _bidRepositoryMock.Setup(r => r.UpdateBidAsync(updatedBid)).ReturnsAsync(updatedBid);
 
-            // Assert
-            Assert.IsType<NoContentResult>(result);
+            // Act - Exécute la méthode à tester
+            var result = await _controller.UpdateBid(1, updatedBid);
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<OkObjectResult>(result);  // Vérifie que le résultat est du type OkObjectResult (HTTP 200 OK)
+            var returnedBid = Assert.IsType<BidList>(actionResult.Value);  // Vérifie que la valeur retournée est du type Bid
+            Assert.Equal(updatedBid.BidListId, returnedBid.BidListId);  // Vérifie que l'ID du bidlist est correct
+            Assert.Equal(updatedBid.Account, returnedBid.Account);  // Vérifie que le Account est correct
+            Assert.Equal(updatedBid.BidType, returnedBid.BidType);  // Vérifie que le BidType est correct
         }
 
         // Test pour UpdateBid - Cas de validation invalide

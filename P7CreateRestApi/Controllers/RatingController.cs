@@ -45,7 +45,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "CreateRating: An error occurred while creating the rating");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while retrieving Rating");
             }
         }
 
@@ -68,7 +68,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"GetRatingById: An error occurred while retrieving the rating with ID {id}");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while retrieving Rating");
             }
         }
 
@@ -79,13 +79,18 @@ namespace P7CreateRestApi.Controllers
             try
             {
                 var ratings = await _ratingRepository.GetAllRatingsAsync();
+                if (ratings == null || !ratings.Any())
+                {
+                    _logger.LogInformation("No Ratings found.");
+                    return NotFound();
+                }
                 _logger.LogInformation("GetAllRatings: Successfully retrieved all ratings");
                 return Ok(ratings);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "GetAllRatings: An error occurred while retrieving all ratings");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while retrieving all Ratings");
             }
         }
 
@@ -126,7 +131,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"UpdateRating: An error occurred while updating the rating with ID {id}");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "UpdateRating: An error occurred while updating the rating with ID");
             }
         }
 
@@ -149,7 +154,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"DeleteRating: An error occurred while deleting the rating with ID {id}");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while retrieving Rating");
             }
         }
     }

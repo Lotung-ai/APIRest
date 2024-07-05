@@ -43,7 +43,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "CreateTrade: An error occurred while creating the trade.");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while retrieving the Trade ID");
             }
         }
 
@@ -65,7 +65,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "GetTradeById: An error occurred while retrieving the trade with ID {TradeId}.", id);
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while retrieving the Trade ID");
             }
         }
 
@@ -75,13 +75,18 @@ namespace P7CreateRestApi.Controllers
             try
             {
                 var trades = await _tradeRepository.GetAllTradesAsync();
+                if (trades == null || !trades.Any())
+                {
+                    _logger.LogInformation("No Trades found.");
+                    return NotFound();
+                }
                 _logger.LogInformation("GetAllTrades: Successfully retrieved all trades.");
                 return Ok(trades);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "GetAllTrades: An error occurred while retrieving all trades.");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while retrieving all Trades");
             }
         }
 
@@ -123,7 +128,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "UpdateTrade: An error occurred while updating the trade with ID {TradeId}.", id);
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while retrieving the Trade ID");
             }
         }
 
@@ -145,7 +150,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "DeleteTrade: An error occurred while deleting the trade with ID {TradeId}.", id);
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while retrieving the Trade ID");
             }
         }
     }

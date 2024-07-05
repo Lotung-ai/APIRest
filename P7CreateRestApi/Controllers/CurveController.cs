@@ -3,6 +3,7 @@ using P7CreateRestApi.Domain;
 using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Repositories;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace P7CreateRestApi.Controllers
 {
@@ -102,15 +103,21 @@ namespace P7CreateRestApi.Controllers
         {
             _logger.LogInformation("UpdateCurvePoint called with ID: {Id} and data: {@CurvePoint}", id, curvePoint);
 
-            if (id != curvePoint.Id)
+           if (curvePoint == null)
             {
-                _logger.LogWarning("ID mismatch in UpdateCurvePoint. Provided ID: {Id}, CurvePoint ID: {CurvePointId}", id, curvePoint.Id);
-                return BadRequest("ID mismatch.");
+                _logger.LogWarning("UpdateCurvePoint: CurvePoint object is null");
+                return BadRequest("CurvePoint object is null");
             }
 
-            if (!ModelState.IsValid)
+            if (id != curvePoint.Id || !ModelState.IsValid)
             {
-                _logger.LogWarning("Invalid data in UpdateCurvePoint.");
+                if (id != curvePoint.Id)
+                {
+                    _logger.LogWarning("UpdateCurvePoint: CurvePoint ID mismatch");
+                    ModelState.AddModelError("IdMismatch", "The curvePoint ID in the URL does not match the ID in the curve object.");
+                }
+
+                _logger.LogWarning("UpdateCurvePoint: ModelState is invalid");
                 return BadRequest(ModelState);
             }
 
@@ -119,16 +126,17 @@ namespace P7CreateRestApi.Controllers
                 var updatedCurvePoint = await _curveRepository.UpdateCurvePointAsync(curvePoint);
                 if (updatedCurvePoint == null)
                 {
-                    _logger.LogWarning("CurvePoint with ID {Id} not found for update.", id);
+                    _logger.LogWarning($"UpdateCurvePoint: No curvePoint found with ID {id}");
                     return NotFound();
                 }
-                _logger.LogInformation("Successfully updated CurvePoint with ID: {Id}", id);
+
+                _logger.LogInformation($"UpdateCurvePoint: CurvePoint updated successfully for ID {id}");
                 return Ok(updatedCurvePoint);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while updating CurvePoint with ID: {Id}", id);
-                return StatusCode(500, "An error occurred while updating the CurvePoint.");
+                _logger.LogError(ex, $"UpdateCurvePoint: An error occurred while updating the curvePoint with ID {id}");
+                return StatusCode(500, "UpdateCurvePoint: An error occurred while updating the curvePoint with ID");
             }
         }
 

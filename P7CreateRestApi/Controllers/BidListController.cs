@@ -76,7 +76,7 @@ namespace P7CreateRestApi.Controllers
         {
             if (bid == null || bid.BidListId != id)
             {
-                _logger.LogWarning($"UpdateBid: Bid object is null or ID mismatch for ID {id}");
+                _logger.LogWarning($"UpdateBid: Bid object is null or ID mismatch");
                 return BadRequest("Bid object is null or ID mismatch");
             }
 
@@ -88,21 +88,20 @@ namespace P7CreateRestApi.Controllers
 
             try
             {
-                var existingBid = await _bidRepository.GetBidByIdAsync(id);
-                if (existingBid == null)
+                var updatedBid= await _bidRepository.UpdateBidAsync(bid);
+                if (updatedBid == null)
                 {
                     _logger.LogWarning($"UpdateBid: No Bid found with ID {id}");
                     return NotFound();
                 }
-
-                await _bidRepository.UpdateBidAsync(bid);
+               
                 _logger.LogInformation($"UpdateBid: Successfully updated Bid with ID {id}");
-                return NoContent();
+                return Ok(updatedBid);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"UpdateBid: An error occurred while updating the bid with ID {id}");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "An error occurred while updating a bid");
             }
         }
 

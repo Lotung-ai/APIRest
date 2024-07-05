@@ -65,7 +65,7 @@ namespace P7CreateRestApi.Repositories
         public async Task<BidList> UpdateBidAsync(BidList bid)
         {
             // Modifier l'état de l'entité pour indiquer qu'elle est en mode de mise à jour.
-            _context.Entry(bid).State = EntityState.Modified;
+            _context.Bids.Update(bid);
             // Sauvegarder les modifications dans la base de données.
             await _context.SaveChangesAsync();
             // Retourner l'offre mise à jour.

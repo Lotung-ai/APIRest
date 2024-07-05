@@ -43,7 +43,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while creating the RuleName.");
-                return StatusCode(500, "Internal server error.");
+                return StatusCode(500, "An error occurred while retrieving all RuleNames");
             }
         }
 
@@ -66,7 +66,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while retrieving the RuleName with ID {Id}.", id);
-                return StatusCode(500, "Internal server error.");
+                return StatusCode(500, "An error occurred while retrieving all RuleNames");
             }
         }
 
@@ -77,13 +77,18 @@ namespace P7CreateRestApi.Controllers
             try
             {
                 var ruleNames = await _ruleRepository.GetAllRuleNamesAsync();
+                if (ruleNames == null || !ruleNames.Any())
+                {
+                    _logger.LogInformation("No RuleName found.");
+                    return NotFound();
+                }
                 _logger.LogInformation("Retrieved all RuleNames successfully.");
                 return Ok(ruleNames);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while retrieving all RuleNames.");
-                return StatusCode(500, "Internal server error.");
+                return StatusCode(500, "An error occurred while retrieving all RuleNames");
             }
         }
 
@@ -125,7 +130,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while updating the RuleName with ID {Id}.", id);
-                return StatusCode(500, "Internal server error.");
+                return StatusCode(500, "An error occurred while retrieving all RuleNames");
             }
         }
 
@@ -148,7 +153,7 @@ namespace P7CreateRestApi.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while deleting the RuleName with ID {Id}.", id);
-                return StatusCode(500, "Internal server error.");
+                return StatusCode(500, "An error occurred while retrieving all RuleNames");
             }
         }
     }

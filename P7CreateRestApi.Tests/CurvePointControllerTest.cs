@@ -218,5 +218,198 @@ namespace P7CreateRestApi.Tests
             Assert.Equal(500, actionResult.StatusCode);  // Vérifie que le code de statut est 500
             Assert.Equal("An error occurred while retrieving all CurvePoints.", actionResult.Value);  // Vérifie que le message d'erreur est correct
         }
+
+        // Test pour UpdateCurvePoint - La mise à jour réussit
+        [Fact]
+        public async Task UpdateCurvePoint_ShouldReturnOk_WhenUpdateIsSuccessful()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            var originalCurvePoint = new CurvePoint
+            {
+                Id = 1,
+                CurveId = 1,
+                AsOfDate = DateTime.Now,
+                Term = 1.0,
+                CurvePointValue = 100.0,
+                CreationDate = DateTime.Now
+            };
+
+            var updatedCurvePoint = new CurvePoint
+            {
+                Id = 1,
+                CurveId = 1,
+                AsOfDate = DateTime.Now,
+                Term = 2.0,
+                CurvePointValue = 200.0,
+                CreationDate = DateTime.Now
+            };
+
+            // Simule que l'entité existe
+            _curveRepositoryMock.Setup(r => r.GetCurvePointByIdAsync(1)).ReturnsAsync(originalCurvePoint);
+            // Simule la mise à jour réussie
+            _curveRepositoryMock.Setup(r => r.UpdateCurvePointAsync(updatedCurvePoint)).ReturnsAsync(updatedCurvePoint);
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.UpdateCurvePoint(1, updatedCurvePoint);
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<OkObjectResult>(result);  // Vérifie que le résultat est du type OkObjectResult (HTTP 200 OK)
+            var returnedCurvePoint = Assert.IsType<CurvePoint>(actionResult.Value);  // Vérifie que la valeur retournée est du type CurvePoint
+            Assert.Equal(updatedCurvePoint.Id, returnedCurvePoint.Id);  // Vérifie que l'ID du curve est correct
+            Assert.Equal(updatedCurvePoint.CurveId, returnedCurvePoint.CurveId);  // Vérifie que le CurveId est correct
+            Assert.Equal(updatedCurvePoint.AsOfDate, returnedCurvePoint.AsOfDate);  // Vérifie que le AsOfDate est correct
+            Assert.Equal(updatedCurvePoint.Term, returnedCurvePoint.Term);  // Vérifie que le Term est correct
+            Assert.Equal(updatedCurvePoint.CurvePointValue, returnedCurvePoint.CurvePointValue);  // Vérifie que le CurvePointValue est correct
+            Assert.Equal(updatedCurvePoint.CreationDate, returnedCurvePoint.CreationDate);  // Vérifie que le CreationDate est correct
+
+        }
+
+        // Test pour UpdateCurvePoint - CurvePoint est nul
+        [Fact]
+        public async Task UpdateCurvePoint_ShouldReturnBadRequest_WhenCurvePointIsNull()
+        {
+            // Arrange
+            CurvePoint curve = null;
+
+            // Act
+            var result = await _controller.UpdateCurvePoint(1, curve);
+
+            // Assert
+            // Vérifie que le résultat est de type BadRequestObjectResult.
+            // La méthode UpdateCurvePoint doit retourner un BadRequest avec un message d'erreur si l'objet CurvePoint est null.
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+
+            // Vérifie que le code de statut HTTP est 400.
+            // C'est le code de réponse standard pour indiquer une demande incorrecte due à des données invalides (dans ce cas, CurvePoint est null).
+            Assert.Equal(400, badRequestResult.StatusCode);
+
+            // Vérifie que le message de la réponse est "CurvePoint object is null".
+            // Ce message est celui qui est renvoyé par la méthode UpdateCurvePoint pour indiquer que l'objet CurvePoint ne peut pas être null.
+            Assert.Equal("CurvePoint object is null", badRequestResult.Value);
+        }
+
+        // Test pour UpdateCurvePoint - ID ne correspond pas
+        [Fact]
+        public async Task UpdateCurvePoint_ShouldReturnBadRequest_WhenIdDoesNotMatch()
+        {
+            // Arrange
+            var curve = new CurvePoint
+            {
+                Id = 2,
+                CurveId = 2,
+                AsOfDate = DateTime.Now,
+                Term = 2.0,
+                CurvePointValue = 200.0,
+                CreationDate = DateTime.Now
+            };
+            // Act
+            var result = await _controller.UpdateCurvePoint(1, curve);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);  // Vérifie que le résultat est du type BadRequestObjectResult (HTTP 400 Bad Request)
+            Assert.True(badRequestResult.Value is SerializableError);
+            var errors = badRequestResult.Value as SerializableError;
+
+            Assert.True(errors.ContainsKey("IdMismatch"));  // Vérifie que le modèle d'état contient une clé "IdMismatch"
+            var errorMessages = errors["IdMismatch"] as string[];
+            Assert.Contains("The curvePoint ID in the URL does not match the ID in the curve object.", errorMessages);  // Vérifie le message d'erreur spécifique
+        }
+
+        // Test pour UpdateCurvePoint - L'élément à mettre à jour n'existe pas
+        [Fact]
+        public async Task UpdateCurvePoint_ShouldReturnNotFound_WhenCurvePointDoesNotExist()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            var curve = new CurvePoint
+            {
+                Id = 1,
+                CurveId = 1,
+                AsOfDate = DateTime.Now,
+                Term = 2.0,
+                CurvePointValue = 200.0,
+                CreationDate = DateTime.Now
+            };
+            _curveRepositoryMock.Setup(r => r.GetCurvePointByIdAsync(1)).ReturnsAsync((CurvePoint)null);
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.UpdateCurvePoint(1, curve);
+
+            // Assert - Vérifie que le résultat est correct
+            Assert.IsType<NotFoundResult>(result);  // Vérifie que le résultat est du type NotFoundResult (HTTP 404 Not Found)
+        }
+
+        // Test pour UpdateCurvePoint - Une exception est levée
+        [Fact]
+        public async Task UpdateCurvePoint_ShouldReturnErrorMessage_WhenExceptionIsThrown()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            var curve = new CurvePoint
+            {
+                Id = 1,
+                CurveId = 1,
+                AsOfDate = DateTime.Now,
+                Term = 2.0,
+                CurvePointValue = 200.0,
+                CreationDate = DateTime.Now
+            };
+            _curveRepositoryMock.Setup(r => r.GetCurvePointByIdAsync(1)).ReturnsAsync(curve);
+            _curveRepositoryMock.Setup(r => r.UpdateCurvePointAsync(curve)).ThrowsAsync(new Exception("Database error"));
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.UpdateCurvePoint(1, curve);
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<ObjectResult>(result);  // Vérifie que le résultat est du type ObjectResult (HTTP 500 Internal Server Error)
+            Assert.Equal(500, actionResult.StatusCode);  // Vérifie que le code de statut est 500
+            Assert.Equal("UpdateCurvePoint: An error occurred while updating the curvePoint with ID", actionResult.Value);  // Vérifie que le message d'erreur est correct
+        }
+
+        // Test pour DeleteCurvePoint - Suppression réussie
+        [Fact]
+        public async Task DeleteCurvePoint_ShouldReturnNoContent_WhenDeleteIsSuccessful()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            int curveId = 1;
+            _curveRepositoryMock.Setup(r => r.DeleteCurvePointAsync(curveId)).ReturnsAsync(true);
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.DeleteCurvePoint(curveId);
+
+            // Assert - Vérifie que le résultat est correct
+            Assert.IsType<NoContentResult>(result);  // Vérifie que le résultat est NoContentResult (HTTP 204 No Content)
+        }
+
+        // Test pour DeleteCurvePoint - CurvePoint non trouvé
+        [Fact]
+        public async Task DeleteCurvePoint_ShouldReturnNotFound_WhenCurvePointDoesNotExist()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            int curveId = 1;
+            _curveRepositoryMock.Setup(r => r.DeleteCurvePointAsync(curveId)).ReturnsAsync(false);
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.DeleteCurvePoint(curveId);
+
+            // Assert - Vérifie que le résultat est correct
+            Assert.IsType<NotFoundResult>(result);  // Vérifie que le résultat est NotFoundResult (HTTP 404 Not Found)
+        }
+
+        // Test pour DeleteCurvePoint - Exception levée
+        [Fact]
+        public async Task DeleteCurvePoint_ShouldReturnErrorMessage_WhenExceptionIsThrown()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            int curveId = 1;
+            _curveRepositoryMock.Setup(r => r.DeleteCurvePointAsync(curveId)).ThrowsAsync(new Exception("Delete failed"));
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.DeleteCurvePoint(curveId);
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<ObjectResult>(result);  // Vérifie que le résultat est du type ObjectResult (HTTP 500 Internal Server Error)
+            Assert.Equal(500, actionResult.StatusCode);  // Vérifie que le code de statut est 500
+            Assert.Equal("An error occurred while deleting the CurvePoint.", actionResult.Value);  // Vérifie que le message d'erreur est correct
+        }
     }
 }
+

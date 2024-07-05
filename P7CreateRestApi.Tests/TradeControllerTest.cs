@@ -161,7 +161,7 @@ namespace P7CreateRestApi.Tests
             // Assert
             var statusCodeResult = Assert.IsType<ObjectResult>(result);  // Vérifie que le résultat est de type ObjectResult
             Assert.Equal((int)HttpStatusCode.InternalServerError, statusCodeResult.StatusCode);  // Vérifie que le code d'état est 500 (Internal Server Error)
-            Assert.Equal("Internal server error", statusCodeResult.Value);  // Vérifie que le message d'erreur est correct
+            Assert.Equal("An error occurred while retrieving the Trade ID", statusCodeResult.Value);  // Vérifie que le message d'erreur est correct
         }
 
         // Test pour GetTradeById - Cas où Trade est trouvé et retourné avec succès
@@ -252,9 +252,99 @@ namespace P7CreateRestApi.Tests
             // Assert
             var actionResult = Assert.IsType<ObjectResult>(result);  // Vérifie que le résultat est de type ObjectResult
             Assert.Equal((int)HttpStatusCode.InternalServerError, actionResult.StatusCode);  // Vérifie que le code d'état est 500 (Internal Server Error)
-            Assert.Contains("Internal server error", actionResult.Value as string);  // Vérifie que le message d'erreur contient le texte attendu
+            Assert.Contains("An error occurred while retrieving the Trade ID", actionResult.Value as string);  // Vérifie que le message d'erreur contient le texte attendu
+        }
+        // Test pour GetAllTrades - Cas où des entités Trade sont trouvées et retournées avec succès
+        [Fact]
+        public async Task GetAllTrades_ShouldReturnOk_WhenTradesExist()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            var curves = new List<Trade>
+            {
+             new Trade {  TradeId = 1,
+                Account = "OldAccount",
+                AccountType = "OldType",
+                BuyQuantity = 100.0,
+                SellQuantity = 50.0,
+                BuyPrice = 10.0,
+                SellPrice = 15.0,
+                TradeDate = DateTime.UtcNow,
+                TradeSecurity = "OldSecurity",
+                TradeStatus = "OldStatus",
+                Trader = "OldTrader",
+                Benchmark = "OldBenchmark",
+                Book = "OldBook",
+                CreationName = "OldCreator",
+                CreationDate = DateTime.UtcNow,
+                RevisionName = "OldRevisor",
+                RevisionDate = DateTime.UtcNow,
+                DealName = "OldDeal",
+                DealType = "OldType",
+                SourceListId = "OldList",
+                Side = "Sell" },
+            new Trade { TradeId = 1,
+                Account = "NewAccount",
+                AccountType = "NewType",
+                BuyQuantity = 200.0,
+                SellQuantity = 100.0,
+                BuyPrice = 12.0,
+                SellPrice = 18.0,
+                TradeDate = DateTime.UtcNow,
+                TradeSecurity = "NewSecurity",
+                TradeStatus = "NewStatus",
+                Trader = "NewTrader",
+                Benchmark = "NewBenchmark",
+                Book = "NewBook",
+                CreationName = "NewCreator",
+                CreationDate = DateTime.UtcNow,
+                RevisionName = "NewRevisor",
+                RevisionDate = DateTime.UtcNow,
+                DealName = "NewDeal",
+                DealType = "NewType",
+                SourceListId = "NewList",
+                Side = "Buy"}
+             };
+
+            _tradeRepositoryMock.Setup(r => r.GetAllTradesAsync()).ReturnsAsync(curves);  // Configure le mock pour retourner la liste de courbes
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.GetAllTrades();
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<OkObjectResult>(result);  // Vérifie que le résultat est du type OkObjectResult (HTTP 200 OK)
+            var returnedTrades = Assert.IsType<List<Trade>>(actionResult.Value);  // Vérifie que la valeur retournée est du type List<Trade>
+            Assert.Equal(curves.Count, returnedTrades.Count);  // Vérifie que le nombre de courbes retournées est correct
         }
 
+        // Test pour GetAllTrades - Cas où aucune entité Trade n'est trouvée
+        [Fact]
+        public async Task GetAllTrades_ShouldReturnNotFound_WhenNoTradesExist()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            _tradeRepositoryMock.Setup(r => r.GetAllTradesAsync()).ReturnsAsync(new List<Trade>());  // Configure le mock pour retourner une liste vide
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.GetAllTrades();
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<NotFoundResult>(result);  // Vérifie que le résultat est du type NotFoundResult (HTTP 404 Not Found)
+        }
+
+        // Test pour GetAllTrades - Cas où une exception est lancée
+        [Fact]
+        public async Task GetAllTrades_ShouldReturnInternalServerError_WhenExceptionIsThrown()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            _tradeRepositoryMock.Setup(r => r.GetAllTradesAsync()).ThrowsAsync(new Exception("Database error"));  // Configure le mock pour lancer une exception
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.GetAllTrades();
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<ObjectResult>(result);  // Vérifie que le résultat est du type ObjectResult (HTTP 500 Internal Server Error)
+            Assert.Equal(500, actionResult.StatusCode);  // Vérifie que le code de statut est 500
+            Assert.Equal("An error occurred while retrieving all Trades", actionResult.Value);  // Vérifie que le message d'erreur est correct
+        }
         // Test pour UpdateTrade - La mise à jour réussit
         [Fact]
         public async Task UpdateTrade_ShouldReturnOk_WhenUpdateIsSuccessful()
@@ -438,7 +528,7 @@ namespace P7CreateRestApi.Tests
             // Assert
             var actionResult = Assert.IsType<ObjectResult>(result);  // Vérifie que le résultat est de type ObjectResult
             Assert.Equal(500, actionResult.StatusCode);  // Vérifie que le code d'état est 500 (Internal Server Error)
-            Assert.Equal("Internal server error", actionResult.Value);  // Vérifie que le message d'erreur est correct
+            Assert.Equal("An error occurred while retrieving the Trade ID", actionResult.Value);  // Vérifie que le message d'erreur est correct
         }
 
         // Test pour DeleteTrade - Suppression réussie
@@ -488,7 +578,7 @@ namespace P7CreateRestApi.Tests
             // Assert
             var actionResult = Assert.IsType<ObjectResult>(result);  // Vérifie que le résultat est de type ObjectResult
             Assert.Equal((int)HttpStatusCode.InternalServerError, actionResult.StatusCode);  // Vérifie que le code d'état est 500 (Internal Server Error)
-            Assert.Equal("Internal server error", actionResult.Value);  // Vérifie que le message d'erreur est correct
+            Assert.Equal("An error occurred while retrieving the Trade ID", actionResult.Value);  // Vérifie que le message d'erreur est correct
         }
     }
 }

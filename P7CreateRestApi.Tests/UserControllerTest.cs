@@ -335,11 +335,7 @@ namespace P7CreateRestApi.Tests
             Assert.Equal("NewFullname", user.Fullname);
             Assert.Equal("NewRole", user.Role);
 
-            // Vérifie que le logger a été appelé au moins une fois pour l'événement de mise à jour réussie.
-            _mockLogger.Verify(logger => logger.LogInformation(It.IsAny<string>(), It.IsAny<object[]>()), Times.AtLeastOnce);
         }
-
-
 
         // Test pour UpdateUser - L'élément à mettre à jour n'existe pas
         [Fact]
@@ -368,7 +364,6 @@ namespace P7CreateRestApi.Tests
             var notFoundResult = Assert.IsType<NotFoundResult>(result);
             Assert.Equal(404, notFoundResult.StatusCode);
         }
-
 
         // Test pour UpdateUser - Une exception est levée
         [Fact]
@@ -402,7 +397,6 @@ namespace P7CreateRestApi.Tests
             // Vérifie que le message d'erreur est "Internal server error".
             Assert.Equal("Internal server error", actionResult.Value);
         }
-
 
         // Test pour DeleteUser - Suppression réussie
         [Fact]

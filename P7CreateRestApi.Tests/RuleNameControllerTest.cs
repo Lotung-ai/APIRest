@@ -82,8 +82,6 @@ namespace P7CreateRestApi.Tests
             Assert.True(badRequestResult.Value is string);
         }
 
-
-
         // Test pour CreateRuleName - Cas où le ModelState est invalide
         [Fact]
         public async Task CreateRuleName_ShouldReturnBadRequest_WhenModelStateIsInvalid()
@@ -137,7 +135,7 @@ namespace P7CreateRestApi.Tests
 
             // Vérifie que la valeur de la réponse est le message d'erreur attendu.
             // Le message d'erreur retourné par le contrôleur est "Internal server error." (avec un point à la fin).
-            Assert.Equal("Internal server error.", statusCodeResult.Value);
+            Assert.Equal("An error occurred while retrieving all RuleNames", statusCodeResult.Value);
         }
 
 
@@ -174,24 +172,24 @@ namespace P7CreateRestApi.Tests
         }
 
         // Test pour GetRuleNameById - Cas où aucune entité RuleName n'est trouvée
-       [Fact]
-public async Task GetRuleNameById_ShouldReturnNotFound_WhenRuleNameDoesNotExist()
-{
-    // Arrange
-    _ruleNameRepositoryMock.Setup(r => r.GetRuleNameByIdAsync(1)).ReturnsAsync((RuleName)null);
+        [Fact]
+        public async Task GetRuleNameById_ShouldReturnNotFound_WhenRuleNameDoesNotExist()
+        {
+            // Arrange
+            _ruleNameRepositoryMock.Setup(r => r.GetRuleNameByIdAsync(1)).ReturnsAsync((RuleName)null);
 
-    // Act
-    var result = await _controller.GetRuleNameById(1);
+            // Act
+            var result = await _controller.GetRuleNameById(1);
 
-    // Assert
-    var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
-    // Vérifie que la réponse est de type NotFoundObjectResult (réponse 404 Not Found avec un message d'erreur)
-    Assert.Equal(404, notFoundResult.StatusCode);
-    // Vérifie que le code de statut est 404 Not Found
+            // Assert
+            var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
+            // Vérifie que la réponse est de type NotFoundObjectResult (réponse 404 Not Found avec un message d'erreur)
+            Assert.Equal(404, notFoundResult.StatusCode);
+            // Vérifie que le code de statut est 404 Not Found
 
-    Assert.Equal("No RuleName found with ID 1.", notFoundResult.Value);
-    // Vérifie que le message d'erreur est correct
-}
+            Assert.Equal("No RuleName found with ID 1.", notFoundResult.Value);
+            // Vérifie que le message d'erreur est correct
+        }
 
 
         // Test pour GetRuleNameById - Cas où une exception est lancée
@@ -211,10 +209,60 @@ public async Task GetRuleNameById_ShouldReturnNotFound_WhenRuleNameDoesNotExist(
             // Vérifie que le code de statut est 500
 
             // Vérifie que le message d'erreur est "Internal server error." (avec le point à la fin)
-            Assert.Equal("Internal server error.", actionResult.Value);
+            Assert.Equal("An error occurred while retrieving all RuleNames", actionResult.Value);
         }
 
+        // Test pour GetAllRuleNames - Cas où des entités RuleName sont trouvées et retournées avec succès
+        [Fact]
+        public async Task GetAllRuleNames_ShouldReturnOk_WhenRuleNamesExist()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            var curves = new List<RuleName>
+            {
+             new RuleName { Id = 1, Name = "OldName", Description = "Old Description", Json = "{}", Template = "OldTemplate", SqlStr = "SELECT * FROM OldTable", SqlPart = "WHERE OldCondition" },
+            new RuleName { Id = 1, Name = "NewName", Description = "New Description", Json = "{}", Template = "NewTemplate", SqlStr = "SELECT * FROM NewTable", SqlPart = "WHERE NewCondition" }
+             };
 
+            _ruleNameRepositoryMock.Setup(r => r.GetAllRuleNamesAsync()).ReturnsAsync(curves);  // Configure le mock pour retourner la liste de courbes
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.GetAllRuleNames();
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<OkObjectResult>(result);  // Vérifie que le résultat est du type OkObjectResult (HTTP 200 OK)
+            var returnedRuleNames = Assert.IsType<List<RuleName>>(actionResult.Value);  // Vérifie que la valeur retournée est du type List<RuleName>
+            Assert.Equal(curves.Count, returnedRuleNames.Count);  // Vérifie que le nombre de courbes retournées est correct
+        }
+
+        // Test pour GetAllRuleNames - Cas où aucune entité RuleName n'est trouvée
+        [Fact]
+        public async Task GetAllRuleNames_ShouldReturnNotFound_WhenNoRuleNamesExist()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            _ruleNameRepositoryMock.Setup(r => r.GetAllRuleNamesAsync()).ReturnsAsync(new List<RuleName>());  // Configure le mock pour retourner une liste vide
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.GetAllRuleNames();
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<NotFoundResult>(result);  // Vérifie que le résultat est du type NotFoundResult (HTTP 404 Not Found)
+        }
+
+        // Test pour GetAllRuleNames - Cas où une exception est lancée
+        [Fact]
+        public async Task GetAllRuleNames_ShouldReturnInternalServerError_WhenExceptionIsThrown()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            _ruleNameRepositoryMock.Setup(r => r.GetAllRuleNamesAsync()).ThrowsAsync(new Exception("Database error"));  // Configure le mock pour lancer une exception
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.GetAllRuleNames();
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<ObjectResult>(result);  // Vérifie que le résultat est du type ObjectResult (HTTP 500 Internal Server Error)
+            Assert.Equal(500, actionResult.StatusCode);  // Vérifie que le code de statut est 500
+            Assert.Equal("An error occurred while retrieving all RuleNames", actionResult.Value);  // Vérifie que le message d'erreur est correct
+        }
         // Test pour UpdateRuleName - La mise à jour réussit
         [Fact]
         public async Task UpdateRuleName_ShouldReturnOk_WhenUpdateIsSuccessful()
@@ -302,10 +350,9 @@ public async Task GetRuleNameById_ShouldReturnNotFound_WhenRuleNameDoesNotExist(
 
             // Assurez-vous que l'objet retourné contient le message d'erreur approprié
             var errorMessage = Assert.IsType<string>(actionResult.Value);
-            Assert.Equal("Internal server error.", errorMessage.Trim());
+            Assert.Equal("An error occurred while retrieving all RuleNames", errorMessage.Trim());
             // Vérifie que le message d'erreur est "Internal server error" en supprimant les espaces superflus
         }
-
 
         // Test pour DeleteRuleName - Suppression réussie
         [Fact]
@@ -369,7 +416,7 @@ public async Task GetRuleNameById_ShouldReturnNotFound_WhenRuleNameDoesNotExist(
 
             // Vérifie que la valeur de la réponse est le message d'erreur attendu.
             // Le message d'erreur retourné par le contrôleur est "Internal server error." (avec un point à la fin).
-            Assert.Equal("Internal server error.", actionResult.Value);
+            Assert.Equal("An error occurred while retrieving all RuleNames", actionResult.Value);
         }
 
     }
