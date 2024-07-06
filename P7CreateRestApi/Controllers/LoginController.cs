@@ -27,7 +27,7 @@ namespace P7CreateRestApi.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-          
+        
 
             // Attempt to sign in the user
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);

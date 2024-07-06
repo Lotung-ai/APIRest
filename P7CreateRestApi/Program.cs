@@ -19,6 +19,7 @@ builder.Services.AddScoped<IRuleRepository, RuleRepository>();
 builder.Services.AddScoped<ITradeRepository, TradeRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<RoleSeeder>();
 
 // Add services to the container.
 
@@ -52,6 +53,7 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
 })
     .AddEntityFrameworkStores<LocalDbContext>()
     .AddDefaultTokenProviders();
+    
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -76,6 +78,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
                 logger.LogWarning("Unauthorized access attempt to {Path}", context.Request.Path);
                 return Task.CompletedTask;
+            },
+            OnForbidden = context =>
+            {
+                var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+                // Access the user from the HttpContext
+                var userName = context.HttpContext.User.Identity?.Name ?? "Anonymous";
+                logger.LogWarning("Forbidden access attempt to {Path} by {User}", context.Request.Path, userName);
+                return Task.CompletedTask;
             }
         };
         options.TokenValidationParameters = new TokenValidationParameters
@@ -98,13 +108,41 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    try
+    {
+        var roleSeeder = services.GetRequiredService<RoleSeeder>();
+        await roleSeeder.SeedRolesAsync();
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
+// Middleware de gestion des erreurs
+app.Use(async (context, next) =>
+{
+    try
+    {
+        await next();
+    }
+    catch (Exception ex)
+    {
+        var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An unhandled exception has occurred.");
+        throw;  // Re-throw l'exception après l'avoir journalisée
+    }
+});
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

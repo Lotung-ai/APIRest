@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace P7CreateRestApi.Migrations
 {
-    public partial class initNewDB : Migration
+    public partial class initNewDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

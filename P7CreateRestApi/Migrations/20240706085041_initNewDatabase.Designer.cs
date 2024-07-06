@@ -12,8 +12,8 @@ using P7CreateRestApi.Data;
 namespace P7CreateRestApi.Migrations
 {
     [DbContext(typeof(LocalDbContext))]
-    [Migration("20240704152209_initNewDB")]
-    partial class initNewDB
+    [Migration("20240706085041_initNewDatabase")]
+    partial class initNewDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
