@@ -1,7 +1,9 @@
 using P7CreateRestApi.Domain;
 using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Repositories;
+using P7CreateRestApi.Services;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace P7CreateRestApi.Controllers
 {
@@ -20,8 +22,12 @@ namespace P7CreateRestApi.Controllers
 
         // 1.1: Implémentez l'API RESTFUL pour créer une entité Bid dans le DataRepository
         [HttpPost]
+        [Authorize]            
         public async Task<IActionResult> CreateBid([FromBody] BidList bid)
         {
+            _logger.LogInformation("CreateBid: User is attempting to create a bid.");
+            
+        
             if (bid == null)
             {
                 _logger.LogWarning("CreateBid: Bid object is null");
@@ -107,8 +113,10 @@ namespace P7CreateRestApi.Controllers
 
         // 1.4: Implémentez l'API RESTFUL pour supprimer une entité Bid
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteBid(int id)
         {
+            _logger.LogInformation("CreateBid: User is attempting to create a bid.");
             try
             {
                 var result = await _bidRepository.DeleteBidAsync(id);

@@ -145,3 +145,4 @@ C:\Users\brandon.ku\source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\obj\D
 C:\Users\brandon.ku\source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\obj\Debug\net8.0\P7CreateRestApi.Tests.pdb
 C:\Users\brandon.ku\source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\obj\Debug\net8.0\P7CreateRestApi.Tests.genruntimeconfig.cache
 C:\Users\brandon.ku\source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\obj\Debug\net8.0\ref\P7CreateRestApi.Tests.dll
+C:\Users\brandon.ku\source\repos\OCProjet7_Findexium\P7CreateRestApi.Tests\bin\Debug\net8.0\.msCoverageSourceRootsMapping_P7CreateRestApi.Tests
