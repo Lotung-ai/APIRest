@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Repositories;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace P7CreateRestApi.Controllers
 {
@@ -22,6 +23,7 @@ namespace P7CreateRestApi.Controllers
 
         // Création d'un Rating
         [HttpPost]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> CreateRating([FromBody] Rating rating)
         {
             if (rating == null)
@@ -51,6 +53,7 @@ namespace P7CreateRestApi.Controllers
 
         // Récupération d'un Rating par ID
         [HttpGet("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetRatingById(int id)
         {
             try
@@ -74,6 +77,7 @@ namespace P7CreateRestApi.Controllers
 
         // Récupération de tous les Ratings
         [HttpGet]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetAllRatings()
         {
             try
@@ -96,6 +100,7 @@ namespace P7CreateRestApi.Controllers
 
         // Mise à jour d'un Rating par ID
         [HttpPut("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> UpdateRating(int id, [FromBody] Rating rating)
         {
             if (rating == null)
@@ -137,6 +142,7 @@ namespace P7CreateRestApi.Controllers
 
         // Suppression d'un Rating par ID
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRating(int id)
         {
             try
