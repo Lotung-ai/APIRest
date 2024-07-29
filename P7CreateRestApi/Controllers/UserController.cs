@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Domain;
@@ -66,6 +67,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetUserById(int id)
         {
             var user = await _userRepository.GetUserByIdAsync(id);
@@ -88,6 +90,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] RegisterModel register)
         {
             if (id <= 0 || register == null)
@@ -143,6 +146,7 @@ namespace P7CreateRestApi.Controllers
 
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             try

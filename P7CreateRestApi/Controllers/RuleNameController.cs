@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging; 
 using P7CreateRestApi.Domain;
@@ -20,6 +21,7 @@ namespace P7CreateRestApi.Controllers
 
         // Création d'un RuleName
         [HttpPost]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> CreateRuleName([FromBody] RuleName ruleName)
         {
             if (ruleName == null)
@@ -49,6 +51,7 @@ namespace P7CreateRestApi.Controllers
 
         // Récupération d'un RuleName par ID
         [HttpGet("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetRuleNameById(int id)
         {
             try
@@ -72,6 +75,7 @@ namespace P7CreateRestApi.Controllers
 
         // Récupération de tous les RuleNames
         [HttpGet]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetAllRuleNames()
         {
             try
@@ -94,6 +98,7 @@ namespace P7CreateRestApi.Controllers
 
         // Mise à jour d'un RuleName par ID
         [HttpPut("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> UpdateRuleName(int id, [FromBody] RuleName ruleName)
         {
             if (ruleName == null)
@@ -136,6 +141,7 @@ namespace P7CreateRestApi.Controllers
 
         // Suppression d'un RuleName par ID
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRuleName(int id)
         {
             try

@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Repositories;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace P7CreateRestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
     public class CurveController : ControllerBase
     {
         private readonly ICurvePointRepository _curveRepository;
@@ -21,6 +23,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> CreateCurvePoint(CurvePoint curvePoint)
         {
             _logger.LogInformation("CreateCurvePoint called with curvePoint: {@CurvePoint}", curvePoint);
@@ -52,6 +55,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetCurvePointById(int id)
         {
             _logger.LogInformation("GetCurvePointById called with ID: {Id}", id);
@@ -76,6 +80,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetAllCurvePoints()
         {
             _logger.LogInformation("GetAllCurvePoints called.");
@@ -99,6 +104,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> UpdateCurvePoint(int id, CurvePoint curvePoint)
         {
             _logger.LogInformation("UpdateCurvePoint called with ID: {Id} and data: {@CurvePoint}", id, curvePoint);
@@ -141,6 +147,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCurvePoint(int id)
         {
             _logger.LogInformation("DeleteCurvePoint called with ID: {Id}", id);

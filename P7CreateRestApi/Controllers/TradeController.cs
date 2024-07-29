@@ -2,6 +2,7 @@ using P7CreateRestApi.Domain;
 using Microsoft.AspNetCore.Mvc;
 using P7CreateRestApi.Repositories;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace P7CreateRestApi.Controllers
 {
@@ -19,6 +20,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> CreateTrade([FromBody] Trade trade)
         {
             // Validation de l'objet Trade
@@ -48,6 +50,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetTradeById(int id)
         {
             try
@@ -91,6 +94,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> UpdateTrade(int id, [FromBody] Trade trade)
         {
             // Validation de l'objet Trade et de l'ID
@@ -133,6 +137,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteTrade(int id)
         {
             try

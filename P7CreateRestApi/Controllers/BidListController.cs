@@ -22,7 +22,7 @@ namespace P7CreateRestApi.Controllers
 
         // 1.1: Implémentez l'API RESTFUL pour créer une entité Bid dans le DataRepository
         [HttpPost]
-        [Authorize]            
+        [Authorize(Roles ="User, Admin")]            
         public async Task<IActionResult> CreateBid([FromBody] BidList bid)
         {
             _logger.LogInformation("CreateBid: User is attempting to create a bid.");
@@ -55,6 +55,7 @@ namespace P7CreateRestApi.Controllers
 
         // 1.2: Implémentez l'API RESTFUL pour récupérer une entité Bid
         [HttpGet("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetBidById(int id)
         {
             try
@@ -78,6 +79,7 @@ namespace P7CreateRestApi.Controllers
 
         // 1.3: Implémentez l'API RESTFUL pour modifier une entité Bid
         [HttpPut("{id}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> UpdateBid(int id, [FromBody] BidList bid)
         {
             if (bid == null || bid.BidListId != id)
