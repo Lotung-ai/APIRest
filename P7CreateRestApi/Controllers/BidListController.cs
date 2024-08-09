@@ -76,7 +76,28 @@ namespace P7CreateRestApi.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        // Récupération de tous les Bid
+        [HttpGet]
+        [Authorize(Roles = "User, Admin")]
+        public async Task<IActionResult> GetAllBids()
+        {
+            try
+            {
+                var bids = await _bidRepository.GetAllBidsAsync();
+                if (bids == null || !bids.Any())
+                {
+                    _logger.LogInformation("No Bids found.");
+                    return NotFound();
+                }
+                _logger.LogInformation("GetAllBids: Successfully retrieved all bids");
+                return Ok(bids);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "GetAllBids: An error occurred while retrieving all bids");
+                return StatusCode(500, "An error occurred while retrieving all Bids");
+            }
+        }
         // 1.3: Implémentez l'API RESTFUL pour modifier une entité Bid
         [HttpPut("{id}")]
         [Authorize(Roles = "User, Admin")]
