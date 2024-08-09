@@ -82,6 +82,7 @@ namespace P7CreateRestApi.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await _userRepository.GetAllUsersAsync();
@@ -141,9 +142,6 @@ namespace P7CreateRestApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error");
             }
         }
-
-
-
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
