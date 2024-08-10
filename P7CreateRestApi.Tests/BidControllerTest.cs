@@ -168,6 +168,107 @@ namespace P7CreateRestApi.Tests
             Assert.Contains("Account is required.", errors);
         }
 
+        // Test pour GetAllBids - Cas où des entités Bid sont trouvées et retournées avec succès
+        [Fact]
+        public async Task GetAllBids_ShouldReturnOk_WhenBidsExist()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            var bids = new List<BidList>
+            {
+                new BidList
+                {
+                    BidListId = 1,
+                    Account = "Account1",
+                    BidType = "Type1",
+                    BidQuantity = 10.0,
+                    AskQuantity = 5.0,
+                    Bid = 100.0,
+                    Ask = 105.0,
+                    Benchmark = "Benchmark1",
+                    BidListDate = DateTime.UtcNow,
+                    Commentary = "Initial bid",
+                    BidSecurity = "Security1",
+                    BidStatus = "Active",
+                    Trader = "Trader1",
+                    Book = "Book1",
+                    CreationName = "Creator1",
+                    CreationDate = DateTime.UtcNow,
+                    RevisionName = "Revisor1",
+                    RevisionDate = DateTime.UtcNow,
+                    DealName = "Deal1",
+                    DealType = "Type1",
+                    SourceListId = "Source1",
+                    Side = "Buy"
+                   },
+
+                new BidList
+                {
+                    BidListId = 2,
+                    Account = "Account2",
+                    BidType = "Type2",
+                    BidQuantity = 20.0,
+                    AskQuantity = 10.0,
+                    Bid = 200.0,
+                    Ask = 210.0,
+                    Benchmark = "Benchmark2",
+                    BidListDate = DateTime.UtcNow,
+                    Commentary = "Updated bid",
+                    BidSecurity = "Security2",
+                    BidStatus = "Inactive",
+                    Trader = "Trader2",
+                    Book = "Book2",
+                    CreationName = "Creator2",
+                    CreationDate = DateTime.UtcNow,
+                    RevisionName = "Revisor2",
+                    RevisionDate = DateTime.UtcNow,
+                    DealName = "Deal2",
+                    DealType = "Type2",
+                    SourceListId = "Source2",
+                    Side = "Sell"
+                }
+
+            };
+
+            _bidRepositoryMock.Setup(r => r.GetAllBidsAsync()).ReturnsAsync(bids);  // Configure le mock pour retourner la liste de courbes
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.GetAllBids();
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<OkObjectResult>(result);  // Vérifie que le résultat est du type OkObjectResult (HTTP 200 OK)
+            var returnedBids = Assert.IsType<List<BidList>>(actionResult.Value);  // Vérifie que la valeur retournée est du type List<Bid>
+            Assert.Equal(bids.Count, returnedBids.Count);  // Vérifie que le nombre de bids retournées est correct
+        }
+
+        // Test pour GetAllBids - Cas où aucune entité Bid n'est trouvée
+        [Fact]
+        public async Task GetAllBids_ShouldReturnNotFound_WhenNoBidsExist()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            _bidRepositoryMock.Setup(r => r.GetAllBidsAsync()).ReturnsAsync(new List<BidList>());  // Configure le mock pour retourner une liste vide
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.GetAllBids();
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<NotFoundResult>(result);  // Vérifie que le résultat est du type NotFoundResult (HTTP 404 Not Found)
+        }
+
+        // Test pour GetAllBids - Cas où une exception est lancée
+        [Fact]
+        public async Task GetAllBids_ShouldReturnError_WhenExceptionIsThrown()
+        {
+            // Arrange - Prépare les objets nécessaires pour le test
+            _bidRepositoryMock.Setup(r => r.GetAllBidsAsync()).ThrowsAsync(new Exception("Database error"));  // Configure le mock pour lancer une exception
+
+            // Act - Exécute la méthode à tester
+            var result = await _controller.GetAllBids();
+
+            // Assert - Vérifie que le résultat est correct
+            var actionResult = Assert.IsType<ObjectResult>(result);  // Vérifie que le résultat est du type ObjectResult (HTTP 500 Internal Server Error)
+            Assert.Equal(500, actionResult.StatusCode);  // Vérifie que le code de statut est 500
+            Assert.Equal("An error occurred while retrieving all Bids", actionResult.Value);  // Vérifie que le message d'erreur est correct
+        }
         // Test pour DeleteBid - Cas de succès
         [Fact]
         public async Task DeleteBid_ShouldReturnNoContent_WhenBidExists()
