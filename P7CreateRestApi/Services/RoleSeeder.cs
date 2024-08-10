@@ -38,31 +38,6 @@ namespace P7CreateRestApi.Services
                     }
                 }
             }
-
-         /*   // Créer un utilisateur administrateur par défaut
-            var adminUser = new User
-            {
-                UserName = "Adminbdk",
-                Email = "admin@example.com",
-                EmailConfirmed = true
-            };
-
-            string adminPassword = "Brad@123456";
-
-            var user = await _userManager.FindByEmailAsync(adminUser.Email);
-            if (user == null)
-            {
-                var createPowerUser = await _userManager.CreateAsync(adminUser, adminPassword);
-                if (createPowerUser.Succeeded)
-                {
-                    await _userManager.AddToRoleAsync(adminUser, "Admin");
-                    _logger.LogInformation("Admin user created and assigned to Admin role");
-                }
-                else
-                {
-                    _logger.LogError("Error creating admin user: {Errors}", createPowerUser.Errors);
-                }
-            }*/
         }
     }
 }

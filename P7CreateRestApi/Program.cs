@@ -53,14 +53,14 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
 })
     .AddEntityFrameworkStores<LocalDbContext>()
     .AddDefaultTokenProviders();
-    
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.Events = new JwtBearerEvents
         {
-            
+
             OnAuthenticationFailed = context =>
             {
                 var _logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();

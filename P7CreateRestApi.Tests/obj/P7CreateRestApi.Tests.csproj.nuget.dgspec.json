@@ -11,7 +11,7 @@
         "projectName": "P7CreateRestApi.Tests",
         "projectPath": "C:\\Users\\brandon.ku\\source\\repos\\OCProjet7_Findexium\\P7CreateRestApi.Tests\\P7CreateRestApi.Tests.csproj",
         "packagesPath": "C:\\Users\\brandon.ku\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\brandon.ku\\Source\\Repos\\OCProjet7_Findexium\\P7CreateRestApi.Tests\\obj\\",
+        "outputPath": "C:\\Users\\brandon.ku\\source\\repos\\OCProjet7_Findexium\\P7CreateRestApi.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
